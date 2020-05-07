@@ -12,7 +12,5 @@ This project applies a simple algorithm to monitor heartrate using a mobile phon
 $ pip install -r requirements.txt
 ```
 
-#### 2. Run heartrate algorithm 
-```
-$ python3 heartrate.py
-```
+#### 2. Running heartrate algorithm 
+(insert gif)
