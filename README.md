@@ -1,15 +1,18 @@
-# heartrate
-A simple algorithm to monitor heartrate via a mobile phone camara
+# Extracting ❤️ - rate with mobile phones 
 
-Usage
+Start here: [`heartrate.ipynb`](test/heartrate.ipynb)
+
+## 💭 Background
+This project applies a simple algorithm to monitor heartrate using a mobile phone with a camera and flash. The goal here is to have a low cost and widely accessible way to measure someones heartrate.
+
+### Usage
 
 #### 1. Install the dependencies
 ```
 $ pip install -r requirements.txt
 ```
 
-#### 2. Run heartrate algorithm the model
+#### 2. Run heartrate algorithm 
 ```
 $ python3 heartrate.py
 ```
-
