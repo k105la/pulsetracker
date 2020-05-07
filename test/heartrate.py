@@ -13,7 +13,7 @@ class HeartRate:
         self.rgb_imgs = []
         self.distance = []
         self.sigmoids = []
-        self.path = glob.glob('./images_rgb/*.jpg')
+        self.path = glob.glob('./images/*.jpg')
         self.frame_rate = 30
         self.dim = (320, 240)
         
@@ -21,7 +21,7 @@ class HeartRate:
         capture = cv.VideoCapture("../hr_test.mp4")
         ret, frame = capture.read()
         for count in range(300):
-            cv.imwrite(f'./images_rgb/frame{count}.jpg', frame)
+            cv.imwrite(f'./images/frame{count}.jpg', frame)
             ret, frame = capture.read()
             print(f'Number of frames: {count}')
             if ret != True:    
