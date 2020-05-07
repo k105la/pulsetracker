@@ -1,5 +1,4 @@
 numpy
 cv2
-tqdm
 matplotlib
 scipy
