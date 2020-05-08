@@ -16,7 +16,7 @@ class HeartRate:
         self.dim = (320, 240)
 
     def video_to_frames(self):
-        capture = cv.VideoCapture("./hr_test.mp4")
+        capture = cv.VideoCapture("./data/hr_test.mp4")
         ret, frame = capture.read()
         for count in range(300):
             cv.imwrite(f'./images/frame{count}.jpg', frame)
