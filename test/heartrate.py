@@ -8,7 +8,6 @@ from scipy.signal import find_peaks, argrelmin
 
 class HeartRate:
     def __init__(self):
-        self.grayscale = []
         self.avg_red = []
         self.rgb_imgs = []
         self.distance = []
