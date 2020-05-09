@@ -13,4 +13,4 @@ $ pip install -r requirements.txt
 ```
 
 #### 2. Running heartrate algorithm 
-(insert gif)
+![](https://media.giphy.com/media/fUeFvFbRcWslSLQX6m/source.gif)
