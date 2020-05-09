@@ -20,12 +20,11 @@ class HeartRate:
     def video_to_frames(self, videoPath):
         capture = cv.VideoCapture(videoPath)
         ret, frame = capture.read()
-        
         # Empty image directory if not empty 
         if len(self.path) != 0:
             for img in self.path:
                 os.remove(img)
-                print(f'removing {img}')
+                print('removing {}'.format(img))
         
         for count in range(300):
             cv.imwrite('../images/frame{}.jpg'.format(count), frame)
@@ -57,9 +56,9 @@ class HeartRate:
         return red
 
 
-    def get_peaks(self):
+    def get_peaks(self, dist=5):
         red = self.signal_diff()
-        peaks, _ = find_peaks(red, distance=5)
+        peaks, _ = find_peaks(red, distance=dist)
         return peaks
         
 
