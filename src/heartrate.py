@@ -1,9 +1,10 @@
 #!/usr/bin/python3
-
 import numpy as np
 import cv2 as cv
 import glob
 from scipy.signal import find_peaks, argrelmin
+import os
+
 
 class HeartRate:
     def __init__(self):
@@ -19,8 +20,15 @@ class HeartRate:
     def video_to_frames(self, videoPath):
         capture = cv.VideoCapture(videoPath)
         ret, frame = capture.read()
+        
+        # Empty image directory if not empty 
+        if len(self.path) != 0:
+            for img in self.path:
+                os.remove(img)
+                print(f'removing {img}')
+        
         for count in range(300):
-            cv.imwrite(f'../images/frame{count}.jpg', frame)
+            cv.imwrite('../images/frame{}.jpg'.format(count), frame)
             ret, frame = capture.read()
             if ret != True:
                 break
@@ -36,10 +44,11 @@ class HeartRate:
             img_array = cv.resize(n, self.dim)
             cv_img.append(img_array)
             grayscale_imgs = np.asarray(cv_img)
+
         return grayscale_imgs
 
 
-    def signal_differentiation(self):
+    def signal_diff(self):
         gray = self.frame_extraction()
         if len(self.avg_red) == 0:
             for i in range(200):
@@ -49,7 +58,7 @@ class HeartRate:
 
 
     def get_peaks(self):
-        red = self.signal_differentiation()
+        red = self.signal_diff()
         peaks, _ = find_peaks(red, distance=5)
         return peaks
         
