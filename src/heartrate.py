@@ -11,17 +11,16 @@ class HeartRate:
         self.rgb_imgs = []
         self.distance = []
         self.sigmoids = []
-        self.path = glob.glob('./images/*.jpg')
+        self.path = glob.glob('../images/*.jpg')
         self.frame_rate = 30
         self.dim = (320, 240)
 
     def video_to_frames(self):
-        capture = cv.VideoCapture("./data/hr_test.mp4")
+        capture = cv.VideoCapture("../data/hr_test.mp4")
         ret, frame = capture.read()
         for count in range(300):
             cv.imwrite(f'./images/frame{count}.jpg', frame)
             ret, frame = capture.read()
-            print(f'Number of frames: {count}')
             if ret != True:
                 break
 
@@ -41,32 +40,34 @@ class HeartRate:
 
     def signal_differentiation(self):
         gray = self.frame_extraction()
-        for i in range(200):
-            self.avg_red.append(int(abs(np.mean(gray[i] - gray[i + 1]))))
-            red = np.asarray(self.avg_red)
-
+        if len(self.avg_red) == 0:
+            for i in range(200):
+                self.avg_red.append(int(abs(np.mean(gray[i] - gray[i + 1]))))
+        red = np.asarray(self.avg_red)
+        return red
+    
+    def get_peaks(self):
+        red = self.signal_differentiation()
         peaks, _ = find_peaks(red, distance=5)
         return peaks
+        
 
-
-    def v(self):
-        peaks = self.signal_differentiation()
-
-        for i in range(len(peaks) - 1):
-            self.distance.append(peaks[i + 1] - peaks[i])
-            dist = np.asarray(self.distance)
-            print(dist)
-            self.sigmoids.append(abs(np.square(abs(dist[i] - np.mean(dist)))))
-            sig = np.asarray(self.sigmoids)
-            print(f'Sigmoids: {sig}')
+    def variance(self):
+        peaks = self.get_peaks()
+        if len(self.sigmoids) == 0: 
+            for i in range(len(peaks) - 1):
+                self.distance.append(peaks[i + 1] - peaks[i])
+                dist = np.asarray(self.distance)
+                self.sigmoids.append(abs(np.square(abs(dist[i] - np.mean(dist)))))
+        sig = np.asarray(self.sigmoids)
+        
         return sig
 
 
     def bpm(self):
-        vari = self.v()
-        minima = argrelmin(vari)
+        v = self.variance()
+        minima = argrelmin(v)
         minima_mean = np.mean(minima)
         heartrate = self.frame_rate * 60 / minima_mean
-        print(f'Current heartrate: {heartrate}')
         return heartrate
 
