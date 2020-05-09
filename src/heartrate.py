@@ -15,11 +15,12 @@ class HeartRate:
         self.frame_rate = 30
         self.dim = (320, 240)
 
-    def video_to_frames(self):
-        capture = cv.VideoCapture("../data/hr_test.mp4")
+
+    def video_to_frames(self, videoPath):
+        capture = cv.VideoCapture(videoPath)
         ret, frame = capture.read()
         for count in range(300):
-            cv.imwrite(f'./images/frame{count}.jpg', frame)
+            cv.imwrite(f'../images/frame{count}.jpg', frame)
             ret, frame = capture.read()
             if ret != True:
                 break
@@ -45,7 +46,8 @@ class HeartRate:
                 self.avg_red.append(int(abs(np.mean(gray[i] - gray[i + 1]))))
         red = np.asarray(self.avg_red)
         return red
-    
+
+
     def get_peaks(self):
         red = self.signal_differentiation()
         peaks, _ = find_peaks(red, distance=5)
@@ -60,7 +62,6 @@ class HeartRate:
                 dist = np.asarray(self.distance)
                 self.sigmoids.append(abs(np.square(abs(dist[i] - np.mean(dist)))))
         sig = np.asarray(self.sigmoids)
-        
         return sig
 
 
@@ -70,4 +71,3 @@ class HeartRate:
         minima_mean = np.mean(minima)
         heartrate = self.frame_rate * 60 / minima_mean
         return heartrate
-
