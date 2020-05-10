@@ -30,7 +30,6 @@ class HeartRate:
             os.makedirs('./images/')
         else:
             self.remove_frames()
-            print('images directory is full')
 
         for count in range(300):
             cv.imwrite('./images/frame{}.jpg'.format(count), frame)
