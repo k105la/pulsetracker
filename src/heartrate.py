@@ -1,9 +1,8 @@
 #!/usr/bin/python3
 import numpy as np
 import cv2 as cv
-import glob
 from scipy.signal import find_peaks, argrelmin
-import os
+import glob, os
 
 
 class HeartRate:
@@ -12,22 +11,29 @@ class HeartRate:
         self.rgb_imgs = []
         self.distance = []
         self.sigmoids = []
-        self.path = glob.glob('../images/*.jpg')
+        self.path = glob.glob('./images/*.jpg')
         self.frame_rate = 30
         self.dim = (320, 240)
 
 
+    def remove_frames(self):
+        imgPath = glob.glob('./images/*.jpg')
+        for img in imgPath:
+            os.remove(img)
+        
+
     def video_to_frames(self, videoPath):
         capture = cv.VideoCapture(videoPath)
         ret, frame = capture.read()
-        # Empty image directory if not empty 
-        if len(self.path) != 0:
-            for img in self.path:
-                os.remove(img)
-                print('removing {}'.format(img))
-        
+
+        if not os.path.exists('./images/'):
+            os.makedirs('./images/')
+        else:
+            self.remove_frames()
+            print('images directory is full')
+
         for count in range(300):
-            cv.imwrite('../images/frame{}.jpg'.format(count), frame)
+            cv.imwrite('./images/frame{}.jpg'.format(count), frame)
             ret, frame = capture.read()
             if ret != True:
                 break
