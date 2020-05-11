@@ -30,7 +30,6 @@ class HeartRate:
             os.makedirs('./images/')
         else:
             self.remove_frames()
-            print('Emptying images directory!')
 
         for count in range(300):
             cv.imwrite('./images/frame{}.jpg'.format(count), frame)
@@ -105,8 +104,7 @@ class HeartRate:
             v = self.variance()
             minima = argrelmin(v)
             minima = np.asarray(minima)
-            m = minima[( minima > self.frame_rate * 60 / 200 )]
-            print(m)
+            m = minima[( minima > self.frame_rate * 60 / 200 )] # Filters values less than 9
             minima_mean = np.mean(m)
             heartrate = self.frame_rate * 60 / minima_mean
             return heartrate
