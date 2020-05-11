@@ -12,12 +12,8 @@ After cloning this repository and changing directories to it.
 ```
 $ pip install -r requirements.txt
 ```
-#### 2. Build library
+#### 2. Install library
 ```
 $ sudo python setup.py install
-```
-#### 3. Install library
-```
-$ pip install -e .
 ```
 See example of usage in examples folder.
