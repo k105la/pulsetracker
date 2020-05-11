@@ -19,6 +19,6 @@ $ sudo python setup.py install
 See example of usage in examples folder.
 
 ### Documentation
-#### 1. `$ cd docs`
-#### 2. `$ make html`
-#### 3. `$ open _build/html/index.html`
+1. `$ cd docs`
+2. `$ make html`
+3. `$ open _build/html/index.html`
