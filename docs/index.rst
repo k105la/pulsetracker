@@ -3,7 +3,7 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to heartrate's documentation!
+HeartRate: Touch based monitoring
 =====================================
 
 .. toctree::
@@ -11,10 +11,16 @@ Welcome to heartrate's documentation!
    :caption: Contents:
 
 
+**HeartRate** is a simple Python library used to monitor heartrate using video from a mobile phone.
+"""""""""""""""
 
-Indices and tables
-==================
+**Basic usage of HeartRate:**
 
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+.. code-block:: python
+  
+  import heartrate as h    
+  heart = h.HeartRate()
+  heart.video_to_frames('./path/to/video.mp4')
+  heart.bpm()
+
+
