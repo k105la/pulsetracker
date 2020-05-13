@@ -3,16 +3,12 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-HeartRate: Touch based monitoring
-=====================================
+HeartRate: Touch based Monitoring
+==================================
+ 
+**HeartRate** is a simple Python library used to monitor heart rate using video from a mobile phone.
 
-.. toctree::
-   :maxdepth: 2
-   :caption: Contents:
-
-
-**HeartRate** is a simple Python library used to monitor heartrate using video from a mobile phone.
-"""""""""""""""
+-----
 
 **Basic usage of HeartRate:**
 
@@ -22,5 +18,17 @@ HeartRate: Touch based monitoring
   heart = h.HeartRate()
   heart.video_to_frames('./path/to/video.mp4')
   heart.bpm()
+
+
+The User Guide
+""""""""""""""
+This part of the documentation, which is mostly prose, begins with some background information about HeartRate, then focuses on step-by-step instructions for getting the most out of Heartrate.
+
+.. toctree::
+   :maxdepth: 2
+
+   intro 
+   install 
+   api
 
 

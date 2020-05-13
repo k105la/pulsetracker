@@ -6,7 +6,14 @@ import glob, os
 
 
 class HeartRate:
+    """
+    This is the main class of the heartrate module.
+    """
     def __init__(self, fr=30):
+        """
+        Initialise the HeartRate class. It takes one argument fr(frame rate) 
+        which defaults to 30.
+        """
         self.avg_red = []
         self.rgb_imgs = []
         self.distance = []
@@ -16,6 +23,9 @@ class HeartRate:
 
 
     def remove_frames(self):
+        """
+        Removes all frames from images folder. 
+        """
         imgPath = glob.glob('./images/*.jpg')
         for img in imgPath:
             os.remove(img)
@@ -23,6 +33,9 @@ class HeartRate:
     # TODO: Improve and clean up video_to_frames() with print statements.
     ## Test with different video lengths must be over 10 seconds long
     def video_to_frames(self, videoPath):
+        """
+        Converts input videoPath to frames.
+        """
         capture = cv.VideoCapture(videoPath)
         ret, frame = capture.read()
 
@@ -45,7 +58,10 @@ class HeartRate:
         cv.destroyAllWindows()
 
 
-    def frame_extraction(self):
+    def frames_to_gray(self):
+        """
+        Converts RGB input frames to grayscale.
+        """
         try:
             imgPath = glob.glob('./images/*.jpg')
             cv_img = []
@@ -62,8 +78,11 @@ class HeartRate:
 
 
     def signal_diff(self):
+        """
+        Subtracts one frame from the subsequent frame.
+        """
         try:
-            gray = self.frame_extraction()
+            gray = self.frame_to_gray()
            
             if len(self.avg_red) == 0: # Will only run loop if avg_red list is empty
                 for i in range(200):
@@ -75,6 +94,10 @@ class HeartRate:
             pass 
 
     def get_peaks(self, dist=5):
+        """
+        Takes a one-dimensional array and finds all local maxima
+        by simple comparison of neighbouring values.
+        """
         try:
             red = self.signal_diff()
             peaks, _ = find_peaks(red, distance=dist)
@@ -84,7 +107,11 @@ class HeartRate:
             pass 
 
 
-    def variance(self):
+    def variances(self):
+        """
+        Calculates the how far the peaks are
+        spread out from their average value.
+        """
         try:
             peaks = self.get_peaks()
             if len(self.sigmoids) == 0: # Will only run loop if sigmoids list is empty
@@ -100,8 +127,11 @@ class HeartRate:
 
 
     def bpm(self):
+        """
+        Calculates the heart rate value. 
+        """
         try:
-            v = self.variance()
+            v = self.variances()
             minima = argrelmin(v)
             minima = np.asarray(minima)
             m = minima[( minima > self.frame_rate * 60 / 200 )] # Filters values less than 9
