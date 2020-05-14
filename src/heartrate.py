@@ -1,8 +1,9 @@
 #!/usr/bin/python3
+import os
+import glob
 import numpy as np
 import cv2 as cv
 from scipy.signal import find_peaks, argrelmin
-import glob, os
 
 
 class HeartRate:
@@ -11,7 +12,7 @@ class HeartRate:
     """
     def __init__(self, fr=30):
         """
-        Initialise the HeartRate class. It takes one argument fr(frame rate) 
+        Initialise the HeartRate class. It takes one argument fr(frame rate)
         which defaults to 30.
         """
         self.avg_red = []
@@ -21,22 +22,22 @@ class HeartRate:
         self.frame_rate = fr
         self.dim = (320, 240)
 
-
-    def remove_frames(self):
+    
+    @staticmethod
+    def remove_frames():
         """
-        Removes all frames from images folder. 
+        Removes all frames from images folder.
         """
-        imgPath = glob.glob('./images/*.jpg')
-        for img in imgPath:
+        img_path = glob.glob('./images/*.jpg')
+        for img in img_path:
             os.remove(img)
 
-    # TODO: Improve and clean up video_to_frames() with print statements.
-    ## Test with different video lengths must be over 10 seconds long
-    def video_to_frames(self, videoPath):
+
+    def video_to_frames(self, video_path):
         """
         Converts input videoPath to frames.
         """
-        capture = cv.VideoCapture(videoPath)
+        capture = cv.VideoCapture(video_path)
         ret, frame = capture.read()
 
         if not os.path.exists('./images/'):
@@ -47,10 +48,11 @@ class HeartRate:
         for count in range(300):
             cv.imwrite('./images/frame{}.jpg'.format(count), frame)
             ret, frame = capture.read()
-            if ret != True:
-                if ((count / self.frame_rate) < 10):
+            if ret is not True:
+                if count / self.frame_rate < 10:
                     self.remove_frames()
-                    print('Your video was {} seconds but video length must be 10 seconds long.'.format(count / self.frame_rate))
+                    print('Your video was {} seconds but video length must be 10 seconds \
+                            long.'.format(count / self.frame_rate))
                     print('Try Again. Please use a video that is 10 seconds or longer.')
                 break
 
@@ -63,13 +65,12 @@ class HeartRate:
         Converts RGB input frames to grayscale.
         """
         try:
-            imgPath = glob.glob('./images/*.jpg')
-            cv_img = []
-    
-            for img in imgPath:
-                n = cv.imread(img, 0)
-                img_array = cv.resize(n, self.dim)
-                cv_img.append(img_array)
+            img_path = glob.glob('./images/*.jpg')
+            cv_img = []    
+            for img in img_path:
+                gray_image = cv.imread(img, 0)
+                gray_array = cv.resize(gray_image, self.dim)
+                cv_img.append(gray_array)
                 grayscale_imgs = np.asarray(cv_img)
             return grayscale_imgs
         
@@ -82,7 +83,7 @@ class HeartRate:
         Subtracts one frame from the subsequent frame.
         """
         try:
-            gray = self.frame_to_gray()
+            gray = self.frames_to_gray()
            
             if len(self.avg_red) == 0: # Will only run loop if avg_red list is empty
                 for i in range(200):
@@ -131,11 +132,12 @@ class HeartRate:
         Calculates the heart rate value. 
         """
         try:
-            v = self.variances()
-            minima = argrelmin(v)
+            variance = self.variances()
+            minima = argrelmin(variance)
             minima = np.asarray(minima)
-            m = minima[( minima > self.frame_rate * 60 / 200 )] # Filters values less than 9
-            minima_mean = np.mean(m)
+            # Filters values less than 9
+            final_minima = minima[(minima > self.frame_rate * 60 / 200)]
+            minima_mean = np.mean(final_minima)
             heartrate = self.frame_rate * 60 / minima_mean
             return heartrate
 

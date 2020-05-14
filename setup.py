@@ -16,6 +16,7 @@ setup(
         'numpy', 
         'opencv-python',
         'scipy',
-        ]
+        'setuptools'
+    ]
 )
 

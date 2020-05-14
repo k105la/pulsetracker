@@ -10,11 +10,11 @@ After cloning this repository and changing directories to it.
 
 #### 1. Install the dependencies
 ```
-$ pip install -r requirements.txt
+$ make install
 ```
 #### 2. Install library
 ```
-$ sudo python setup.py install
+$ make
 ```
 See example of usage in examples folder.
 
