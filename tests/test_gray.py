@@ -2,7 +2,7 @@ import unittest
 import heartrate as h
 
 class GrayTest(unittest.TestCase):
-    def testFrameToGray(self):
+    def testFramesToGray(self):
         heart = h.HeartRate()
         heart.video_to_frames('./data/hr_test.mp4')
         gray = heart.frames_to_gray()
