@@ -20,10 +20,7 @@ See example of usage in examples folder.
 
 ### Usage with Docker 
 ```
-$ docker build -t heartrate:0.1 .
-```
-```
-$ docker run --rm heartrate:0.1
+$ sh run_docker.sh
 ```
 
 ### Documentation
