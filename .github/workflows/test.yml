@@ -9,12 +9,12 @@ jobs:
         - uses: actions/checkout@v2
         - uses: actions/setup-python@v2
           with:
-            python-version: '2.7'
+            python-version: '3.5'
             ref: devel
         - name: Install the dependencies
           run: make install
         - name: Install setuptools
-          run: apt-get install -y python-setuptools
+          run: sudo apt-get install -y python-setuptools
         - name: Install library
           run: make
         - name: Run Unit Test 
