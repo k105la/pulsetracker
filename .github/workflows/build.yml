@@ -3,9 +3,9 @@ on: push
 
 jobs:
     build:
-        name: Checkout master
-        runs-on: ubuntu-18.04
-        steps:
-        - uses: actions/checkout@v2     
-        - name: Build
-          run: docker build -t heartrate:0.1 . 
+      name: Checkout master
+      runs-on: ubuntu-18.04
+      steps:
+      - uses: actions/checkout@v2     
+      - name: Build
+        run: docker build -t heartrate:0.1 . 
