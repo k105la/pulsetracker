@@ -13,3 +13,5 @@ jobs:
             ref: devel
         - name: Install dependencies
           run: make install 
+        - name: Build
+          run: docker build -t heartrate:0.1 . 
