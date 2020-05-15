@@ -10,4 +10,4 @@ jobs:
           with:
             ref: devel
         - name: Build docker image
-          run: sh ./run_docker.sh
+          run: ./run_docker.sh
