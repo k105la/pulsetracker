@@ -3,6 +3,10 @@ on: [push, pull_request]
 
 jobs:
     build:
+        name: Checkout master
+        - uses: actions/checkout@v2
+          with:
+            ref: devel
         name: build
         runs-on: ubuntu-18.04
         steps:
