@@ -1,5 +1,4 @@
 FROM ubuntu:18.04
-LABEL maintainer="hyltonakil@gmail.com" version="0.1"
 COPY . ./heartrate
 WORKDIR /heartrate
 ENV PYTHONPATH /heartrate/src
