@@ -17,3 +17,5 @@ jobs:
             DOCKER_PASSWORD: ${{ secrets.GIT_ACCESS_TOKEN }}
           run: |
            echo "$DOCKER_PASSWORD" | docker login --username "$DOCKER_USERNAME" --password-stdin docker.pkg.github.com
+        - name: Push Docker image
+          run: docker push docker.pkg.github.com/akilhylton/heartrate/ahylton/heartrate:0.1
