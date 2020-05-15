@@ -11,7 +11,7 @@ jobs:
           with:
             python-version: '2.7'
             ref: devel
-        - name: Install setuptools
-          run: sudo apt-get install -y python-setuptools
+        - name: Install apt-utils
+          run: sudo apt-get install -y --no-install-recommends apt-utils
         - name: Run Unit Test 
           run: sh run_docker.sh
