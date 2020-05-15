@@ -7,4 +7,4 @@ jobs:
         runs-on: ubuntu-18.04
         steps:
         - name: Build docker image
-            run: sh run_docker.sh
+          run: sh run_docker.sh
