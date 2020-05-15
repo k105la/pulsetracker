@@ -4,14 +4,12 @@ on: [push, pull_request]
 jobs:
     build:
         name: Checkout master
-        runs-on: ubuntu-16.04
+        runs-on: ubuntu-18.04
         steps:
         - uses: actions/checkout@v2
         - uses: actions/setup-python@v2
           with:
             python-version: '2.7'
             ref: devel
-        - name: Install apt-utils
-          run: sudo apt-get install -y --no-install-recommends apt-utils
-        - name: Run Unit Test 
-          run: sh run_docker.sh
+        - name: Install dependencies
+          run: make install 
