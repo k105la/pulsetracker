@@ -1,6 +1,6 @@
 import time
 import unittest
-import heartrate as h
+import pulse as p
 
 
 class TimeTest(unittest.TestCase):    
@@ -12,9 +12,9 @@ class TimeTest(unittest.TestCase):
         print('{}: {}'.format(self.id(), t))
 
     def testVideoProcessing(self):
-        heart = h.HeartRate()
-        heart.video_to_frames('./data/hr_test.mp4')
-        heart.bpm()
+        pulse = p.Pulse()
+        pulse.video_to_frames('./data/hr_test.mp4')
+        pulse.bpm()
 
 if __name__ == '__main__':
     time_test = unittest.TestLoader().loadTestsFromTestCase(TimeTest)

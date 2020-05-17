@@ -1,9 +1,9 @@
 # Extracting ❤️ - rate with mobile phones 
 
-Start here: [`heartrate.py`](src/heartrate.py)
+Start here: [`pulse.py`](src/pulse.py)
 
 ## 💭 Background
-This project applies a simple algorithm to monitor heartrate using a mobile phone with a camera and flash. The goal here is to have a low cost and widely accessible way to measure someones heartrate.
+This project applies a simple algorithm to monitor heart rate using a mobile phone with a camera and flash. The goal here is to have a low cost and widely accessible way to measure someones heart rate.
 
 ### Usage
 After cloning this repository and changing directories to it.
@@ -20,7 +20,7 @@ See example of usage in examples folder.
 
 ### Usage with Docker 
 ```
-$ sh run_docker.sh
+$ sudo sh run_docker.sh
 ```
 
 ### Documentation

@@ -1,12 +1,12 @@
-import heartrate as h
+import pulse as p
 import matplotlib.pyplot as plt
 
-heart = h.HeartRate()
+pulse = p.Pulse()
 
-heart.video_to_frames('./data/hr_test.mp4')
+pulse.video_to_frames('./data/hr_test.mp4')
 
-peaks = heart.get_peaks()
-reds = heart.signal_diff()
+peaks = pulse.get_peaks()
+reds = pulse.signal_diff()
 
 plt.figure(figsize=(20,10))
 plt.title("Signal Differentiation")

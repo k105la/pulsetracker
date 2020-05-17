@@ -6,13 +6,13 @@ import cv2 as cv
 from scipy.signal import find_peaks, argrelmin
 
 
-class HeartRate:
+class Pulse:
     """
-    This is the main class of the heartrate module.
+    This is the main class of the pulsetracker module.
     """
     def __init__(self, fr=30):
         """
-        Initialise the HeartRate class. It takes one argument fr(frame rate)
+        Initialise the Pulse class. It takes one argument fr(frame rate)
         which defaults to 30.
         """
         self.avg_red = []
