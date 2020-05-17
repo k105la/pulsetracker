@@ -1,4 +1,4 @@
-name: PulseTracker DockerHub Push
+name: PulseTracker Docker Pushes
 on: 
   push:
       branches: 
@@ -13,9 +13,15 @@ jobs:
         steps:
         - uses: actions/checkout@v2
                 
-        - name: Login
+        - name: Login into DockerHub
           run: docker login -u ${{secrets.DOCKER_USERNAME}} -p ${{secrets.DOCKER_PASSWORD}}
-        - name: Build
+        - name: Build for DockerHub
           run: docker build -t ahylton/pulsetracker:0.1 .
-        - name: Push 
+        - name: Push to DockerHub
           run: docker push ahylton/pulsetracker:0.1
+        - name: Login to Github Packages
+          run: docker login docker.pkg.github.com -u ${{secrets.GIT_USERNAME}} -p ${{secrets.GIT_PASSWORD}}
+        - name: Build for Github Packages
+          run: docker build -t docker.pkg.github.com/akilhylton/ahylton/pulsetracker:0.1 .
+        - name: Push to Github Packages
+          run: docker push docker.pkg.github.com/akilhylton/ahylton/pulsetracker:0.1	
