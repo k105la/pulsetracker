@@ -22,6 +22,6 @@ jobs:
         - name: Login to Github Packages
           run: docker login docker.pkg.github.com -u ${{secrets.GIT_USERNAME}} -p ${{secrets.GIT_PASSWORD}}
         - name: Build for Github Packages
-          run: docker build -t docker.pkg.github.com/akilhylton/ahylton/pulsetracker:0.1 .
+          run: docker build -t docker.pkg.github.com/akilhylton/pulsetracker:0.1 .
         - name: Push to Github Packages
-          run: docker push docker.pkg.github.com/akilhylton/ahylton/pulsetracker:0.1	
+          run: docker push docker.pkg.github.com/akilhylton/pulsetracker:0.1	
