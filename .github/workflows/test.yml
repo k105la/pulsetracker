@@ -1,0 +1,13 @@
+name: PulseTracker Tests
+
+on: [push, pull_request]
+
+jobs:
+   build:
+       name: Checkout master
+       runs-on: ubuntu-18.04
+       steps:
+       - uses: actions/checkout@v2
+       - name: Run Unit Test
+         run: sh run_docker.sh  
+
