@@ -1,9 +1,9 @@
-SRC_CODE='./src/heartrate.py'
+SRC_CODE='./src/pulse.py'
 TEST_TIME='./tests/test_time.py'
 TEST_GRAY='./tests/test_gray.py'
 
 all:
-	sudo python setup.py install
+	pip install -e .
 
 install:
 	pip install -r requirements.txt
@@ -11,7 +11,8 @@ install:
 test:
 	python ${TEST_TIME}
 	python ${TEST_GRAY}
-
+	rm -rf ./images/
+	
 lint:
 	pylint ${SRC_CODE} --extension-pkg-whitelist=cv2
 

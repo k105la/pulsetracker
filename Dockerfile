@@ -1,7 +1,7 @@
 FROM ubuntu:18.04
-COPY . ./heartrate
-WORKDIR /heartrate
-ENV PYTHONPATH /heartrate/src
+COPY . ./pulsetracker
+WORKDIR /pulsetracker
+ENV PYTHONPATH /pulse/src
 RUN apt-get update && apt-get install -y --no-install-recommends \
     make \
     sudo \ 
@@ -9,5 +9,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libxext6 \
     python-pip \
     libxrender1 \
-    libglib2.0-0
+    libglib2.0-0 \
+	python-setuptools \
+	python3-setuptools
 RUN make install 

@@ -1,11 +1,11 @@
 import unittest
-import heartrate as h
+import pulse as p
 
 class GrayTest(unittest.TestCase):
     def testFramesToGray(self):
-        heart = h.HeartRate()
-        heart.video_to_frames('./data/hr_test.mp4')
-        gray = heart.frames_to_gray()
+        pulse = p.Pulse()
+        pulse.video_to_frames('./data/hr_test.mp4')
+        gray = pulse.frames_to_gray()
         self.assertEqual(len(gray), 300)
 
 
