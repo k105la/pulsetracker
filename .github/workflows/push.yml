@@ -3,7 +3,7 @@ on:
   push:
       branches: 
           - master
-            - devel
+          - devel
            
 
 jobs:
