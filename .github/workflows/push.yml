@@ -19,10 +19,9 @@ jobs:
           run: docker build -t ahylton/pulsetracker:0.1 .
         - name: Push to DockerHub
           run: docker push ahylton/pulsetracker:0.1
-
-		- name: Login into GitHub Packages
-		  run: docker login docker.pkg.github.com -u ${{secrets.GIT_USERNAME}} -p ${{secrets.GIT_PASSWORD}}
-		- name: Build for GitHib Packages
-		  run: docker build -t docker.pkg.github.com/akilhylton/pulsetracker/ahylton/pulsetracker:0.1 .
-		- name: Push to GitHub Packages
-		  run: docker push docker.pkg.github.com/akilhylton/pulsetracker/ahylton/pulsetracker:0.1
+        - name: Login to Github Packages
+          run: docker login docker.pkg.github.com -u ${{secrets.GIT_USERNAME}} -p ${{secrets.GIT_PASSWORD}}
+        - name: Build for Github Packages
+          run: docker build -t docker.pkg.github.com/akilhylton/ahylton/pulsetracker:0.1 .
+        - name: Push to Github Packages
+          run: docker push docker.pkg.github.com/akilhylton/ahylton/pulsetracker:0.1	
