@@ -13,6 +13,6 @@ jobs:
        - name: Install package
          run: make
        - name: Install pylint
-         run: pip install pylint
+         run: sudo pip install pylint
        - name: Run Linter
          run: make lint
