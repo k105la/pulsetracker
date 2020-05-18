@@ -9,6 +9,10 @@ jobs:
 
     steps:
     - uses: actions/checkout@v1
+    - name: Install 
+      run: make install
+    - name: Build package
+      run: make
     - uses: ricardochaves/python-lint@master
       with:
-        python-root-list: 'pulsetracker tests'
+        python-root-list: 'pulsetracker src'
