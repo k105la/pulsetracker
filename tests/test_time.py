@@ -13,7 +13,6 @@ class TimeTest(unittest.TestCase):
 
     def testVideoProcessing(self):
         pulse = p.Pulse()
-        pulse.video_to_frames('./data/hr_test.mp4')
         pulse.bpm()
 
 if __name__ == '__main__':
