@@ -1,19 +1,12 @@
-name: PulseTracker Linter
+name: PulseTracker Tests
 
 on: [push, pull_request]
 
 jobs:
    build:
-       runs-on: ubuntu-18.04
        name: Checkout master
+       runs-on: ubuntu-18.04
        steps:
        - uses: actions/checkout@v2
-       - uses: actions/setup-python@v2
-         with: 
-            python-version: 2.7
-       - name: Install dependencies
-         run: make install
-       - name: Install package
-         run: make
-       - name: Run Linter
-         run: make lint
+       - name: Run Unit Test
+         run: sh run_docker.sh  
