@@ -13,3 +13,4 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 	python-setuptools \
 	python3-setuptools
 RUN make install 
+RUN make
