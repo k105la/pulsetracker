@@ -1,4 +1,4 @@
-mport unittest
+import unittest
 import pulse as p
 
 class SignalTest(unittest.TestCase):
