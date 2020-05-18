@@ -12,5 +12,7 @@ jobs:
          run: make install
        - name: Install package
          run: make
+       - name: Install pylint
+         run: pip install pylint
        - name: Run Linter
          run: make lint
