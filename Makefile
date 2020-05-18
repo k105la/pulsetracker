@@ -23,11 +23,11 @@ test:
 
 lint:
 	pylint ${SRC_CODE} --extension-pkg-whitelist=cv2
-	pylint ${TEST_TIME}
-	pylint ${TEST_GRAY}
-	pylint ${TEST_PEAKS}
-	pylint ${TEST_VARI}
-	pylint ${TEST_SIGNAL}
+	#pylint ${TEST_TIME}
+	#pylint ${TEST_GRAY}
+	#pylint ${TEST_PEAKS}
+	#pylint ${TEST_VARI}
+	#pylint ${TEST_SIGNAL}
 	
 clean:
 	rm -rf ./images/
