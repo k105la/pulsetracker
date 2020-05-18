@@ -14,11 +14,11 @@ install:
 	pip install -r requirements.txt
 
 test:
-	python ${TEST_TIME}
-	python ${TEST_GRAY}
+	#python ${TEST_TIME}
+	#python ${TEST_GRAY}
 	python ${TEST_PEAKS}
-	python ${TEST_VARI}
-	python ${TEST_SIGNAL}
+	#python ${TEST_VARI}
+	#python ${TEST_SIGNAL}
 	rm -rf ./images/
 
 lint:
