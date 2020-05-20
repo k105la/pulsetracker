@@ -19,8 +19,13 @@ $ make
 See example of usage in examples folder.
 
 ### Testing 
+#### Local Testing
 ```
-$ sudo sh run_docker.sh
+$ sudo sh install.sh && sudo make test
+```
+#### Testing with Docker
+```
+$ sudo sh run_docker_test.sh
 ```
 
 ### Documentation
