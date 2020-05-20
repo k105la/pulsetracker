@@ -24,6 +24,7 @@ test:
 
 lint:
 	flake8 --ignore=E722,E501,W291,W293 src/pulse.py
+	pylint --disable=trailing-whitespace,superfluous-parens,missing-docstring,bare-except,len-as-condition --extension-pkg-whitelist=cv2 --max-line-length=120 src/	
 
 clean:
 	rm -rf ./images/

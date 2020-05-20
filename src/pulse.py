@@ -6,11 +6,11 @@ import cv2 as cv
 from scipy.signal import find_peaks, argrelmin
 
 
-class Pulse:
+class Pulse(object):
     """
     This is the main class of the pulsetracker module.
     """
-    def __init__(self, fr=30):
+    def __init__(self, frame_rate=30):
         """
         Initialise the Pulse class. It takes one argument fr(frame rate)
         which defaults to 30.
@@ -19,7 +19,7 @@ class Pulse:
         self.rgb_imgs = []
         self.distance = []
         self.sigmoids = []
-        self.frame_rate = fr
+        self.frame_rate = frame_rate
         self.dim = (320, 240)
 
     @staticmethod
@@ -131,8 +131,8 @@ class Pulse:
             minima = np.asarray(minima)
             final_minima = minima[(minima > self.frame_rate * 60 / 200)]  # Filters values less than 9
             minima_mean = np.mean(final_minima)
-            heartrate = self.frame_rate * 60 / minima_mean
-            return heartrate
+            heart_rate = self.frame_rate * 60 / minima_mean
+            return heart_rate
 
         except:
             pass
