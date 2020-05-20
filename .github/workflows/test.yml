@@ -9,5 +9,4 @@ jobs:
        steps:
        - uses: actions/checkout@v2
        - name: Run Unit Test
-         run: sh run_docker.sh  
-
+         run: sh install.sh && make lint 
