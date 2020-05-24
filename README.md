@@ -1,5 +1,7 @@
 # Extracting ❤️ - rate with mobile phones 
 
+![PulseTracker Tests](https://github.com/akilhylton/pulsetracker/workflows/PulseTracker%20Tests/badge.svg)
+
 Start here: [`pulse.py`](src/pulse.py)
 
 ## 💭 Background
