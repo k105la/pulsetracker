@@ -6,11 +6,11 @@ import cv2 as cv
 from scipy.signal import find_peaks, argrelmin
 
 
-class Pulse:
+class Pulse(object):
     """
     This is the main class of the pulsetracker module.
     """
-    def __init__(self, fr=30):
+    def __init__(self, frame_rate=30):
         """
         Initialise the Pulse class. It takes one argument fr(frame rate)
         which defaults to 30.
@@ -19,10 +19,9 @@ class Pulse:
         self.rgb_imgs = []
         self.distance = []
         self.sigmoids = []
-        self.frame_rate = fr
+        self.frame_rate = frame_rate
         self.dim = (320, 240)
 
-    
     @staticmethod
     def remove_frames():
         """
@@ -31,7 +30,6 @@ class Pulse:
         img_path = glob.glob('./images/*.jpg')
         for img in img_path:
             os.remove(img)
-
 
     def video_to_frames(self, video_path):
         """
@@ -59,7 +57,6 @@ class Pulse:
         capture.release()
         cv.destroyAllWindows()
 
-
     def frames_to_gray(self):
         """
         Converts RGB input frames to grayscale.
@@ -77,7 +74,6 @@ class Pulse:
         except:
             print('The images directory is empty, you must first run video_to_frames()')
 
-
     def signal_diff(self):
         """
         Subtracts one frame from the subsequent frame.
@@ -85,7 +81,7 @@ class Pulse:
         try:
             gray = self.frames_to_gray()
            
-            if len(self.avg_red) == 0: # Will only run loop if avg_red list is empty
+            if len(self.avg_red) == 0:  # Will only run loop if avg_red list is empty
                 for i in range(200):
                     self.avg_red.append(int(abs(np.mean(gray[i] - gray[i + 1]))))
             red = np.asarray(self.avg_red)
@@ -107,7 +103,6 @@ class Pulse:
         except:
             pass 
 
-
     def variances(self):
         """
         Calculates the how far the peaks are
@@ -115,7 +110,7 @@ class Pulse:
         """
         try:
             peaks = self.get_peaks()
-            if len(self.sigmoids) == 0: # Will only run loop if sigmoids list is empty
+            if len(self.sigmoids) == 0:  # Will only run loop if sigmoids list is empty
                 for i in range(len(peaks) - 1):
                     self.distance.append(peaks[i + 1] - peaks[i])
                     dist = np.asarray(self.distance)
@@ -126,7 +121,6 @@ class Pulse:
         except:
             pass
 
-
     def bpm(self):
         """
         Calculates the heart rate value. 
@@ -135,11 +129,10 @@ class Pulse:
             variance = self.variances()
             minima = argrelmin(variance)
             minima = np.asarray(minima)
-            # Filters values less than 9
-            final_minima = minima[(minima > self.frame_rate * 60 / 200)]
+            final_minima = minima[(minima > self.frame_rate * 60 / 200)]  # Filters values less than 9
             minima_mean = np.mean(final_minima)
-            heartrate = self.frame_rate * 60 / minima_mean
-            return heartrate
+            heart_rate = self.frame_rate * 60 / minima_mean
+            return heart_rate
 
         except:
             pass

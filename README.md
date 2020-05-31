@@ -1,4 +1,6 @@
-# Extracting ❤️ - rate with mobile phones 
+![Imgur](https://i.imgur.com/E3s6RUi.png)
+
+![PulseTracker Tests](https://github.com/akilhylton/pulsetracker/workflows/PulseTracker%20Tests/badge.svg)
 
 Start here: [`pulse.py`](src/pulse.py)
 
@@ -19,8 +21,13 @@ $ make
 See example of usage in examples folder.
 
 ### Testing 
+#### Local Testing
 ```
-$ sudo sh run_docker.sh
+$ sudo sh install.sh && sudo make test
+```
+#### Testing with Docker
+```
+$ sudo sh run_docker_test.sh
 ```
 
 ### Documentation
