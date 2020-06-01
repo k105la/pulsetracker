@@ -8,6 +8,8 @@ jobs:
        runs-on: ubuntu-18.04
        steps:
        - uses: actions/checkout@v2
+       - name: Install setuptools
+         run: sudo apt-get install -y python-setuptools && sudo apt-get install -y python3-setuptools
        - name: Install
          run: make install && make
        - name: Run Unit Test
