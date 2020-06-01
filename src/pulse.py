@@ -1,8 +1,10 @@
 #!/usr/bin/python3
 import os
 import glob
+import pyrebase
 import numpy as np
 import cv2 as cv
+from dotenv import load_dotenv
 from scipy.signal import find_peaks, argrelmin
 
 
@@ -30,6 +32,44 @@ class Pulse(object):
         img_path = glob.glob('./images/*.jpg')
         for img in img_path:
             os.remove(img)
+
+    def pulsebox_to_frames(self, uid):
+        """
+        Converts the a video stored in a users
+        pulsebox storage to frames. 
+        """
+        #load_dotenv()
+        ##FIREBASE_API_KEY = os.getenv("API_KEY") 
+        config = {
+            "apiKey": "AIzaSyBoCLNFNU2-_J6NQtbLD7GGy30zRvkzBmk",
+            "authDomain": "pulse-box.firebaseapp.com",
+            "databaseURL": "https://pulse-box.firebaseio.com",
+            "storageBucket": "pulse-box.appspot.com"
+        }
+
+        firebase = pyrebase.initialize_app(config)
+
+        storage = firebase.storage()
+        pulsebox_video = storage.child(f'data/{uid}/hr_test.MOV').get_url(1)
+        print(pulsebox_video)
+        
+        capture = cv.VideoCapture(pulsebox_video)
+        ret, frame = capture.read()
+
+        if not os.path.exists('./images/'):
+            os.makedirs('./images/')
+        else:
+            self.remove_frames()
+
+        for count in range(300):
+            cv.imwrite(f'./images/frame{count}.jpg', frame)
+            ret, frame = capture.read()
+
+        capture.release()
+        cv.destroyAllWindows()
+                    
+
+
 
     def video_to_frames(self, video_path):
         """

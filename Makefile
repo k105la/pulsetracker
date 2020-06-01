@@ -8,18 +8,18 @@ TEST_BPM='./tests/test_bpm.py'
 
 
 all:
-	pip install -e .
+	pip3 install -e .
 
 install:
-	pip install -r requirements.txt
+	pip3 install -r requirements.txt
 
 test:
-	python ${TEST_TIME}
-	python ${TEST_GRAY}
-	python ${TEST_SIGNAL}
-	python ${TEST_VARI}
-	python ${TEST_VARI}
-	python ${TEST_BPM}
+	python3 ${TEST_TIME}
+	python3 ${TEST_GRAY}
+	python3 ${TEST_SIGNAL}
+	python3 ${TEST_VARI}
+	python3 ${TEST_VARI}
+	python3 ${TEST_BPM}
 	rm -rf ./images/
 
 lint:

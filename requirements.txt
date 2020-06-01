@@ -1,4 +1,5 @@
 numpy
 opencv-python
 scipy
+pyrebase
 sphinx_rtd_theme

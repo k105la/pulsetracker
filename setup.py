@@ -15,6 +15,7 @@ setup(
         'numpy', 
         'opencv-python',
         'scipy',
+        'pyrebase',
         'setuptools'
     ]
 )
