@@ -17,7 +17,7 @@ class TimeTest(unittest.TestCase):
     def testSysetemSpeed(self):
         """This function runs the entire heart rate system."""
         pulse = p.Pulse()
-        pulse.video_to_frames('./data/hr_test.mp4')
+        pulse.pulsebox_to_frames('FX4lQF6rwoc805hDjWBK9cECuro2')
         pulse.bpm()
 
 

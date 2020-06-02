@@ -9,7 +9,7 @@ class TestVariances(unittest.TestCase):
         returns a one dimensional matrix.
         """
         pulse = p.Pulse()
-        pulse.video_to_frames('./data/hr_test.mp4')
+        pulse.pulsebox_to_frames('FX4lQF6rwoc805hDjWBK9cECuro2')
         v = pulse.variances()
         v_dim = v.reshape(-1, 1).shape[1]
         self.assertEqual(v_dim, 1)

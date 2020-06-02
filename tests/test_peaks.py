@@ -9,7 +9,7 @@ class TestPeaks(unittest.TestCase):
         returns a one dimentional matrix.
         """
         pulse = p.Pulse()
-        pulse.video_to_frames('./data/hr_test.mp4')
+        pulse.pulsebox_to_frames('FX4lQF6rwoc805hDjWBK9cECuro2')
         peaks = pulse.get_peaks()
         peaks_dim = peaks.reshape(-1, 1).shape[1]
         self.assertEqual(peaks_dim, 1)
