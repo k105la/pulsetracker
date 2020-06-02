@@ -13,4 +13,4 @@ jobs:
        - name: Install
          run: make install && make
        - name: Run Unit Test
-         run: sh install.sh && make lint 
+         run: make test
