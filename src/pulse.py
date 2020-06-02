@@ -4,7 +4,6 @@ import glob
 import pyrebase
 import numpy as np
 import cv2 as cv
-from dotenv import load_dotenv
 from scipy.signal import find_peaks, argrelmin
 
 
@@ -38,8 +37,6 @@ class Pulse(object):
         Converts the a video stored in a users
         pulsebox storage to frames. 
         """
-        #load_dotenv()
-        ##FIREBASE_API_KEY = os.getenv("API_KEY") 
         config = {
             "apiKey": "AIzaSyBoCLNFNU2-_J6NQtbLD7GGy30zRvkzBmk",
             "authDomain": "pulse-box.firebaseapp.com",
