@@ -15,10 +15,10 @@ jobs:
         - name: Login into DockerHub
           run: docker login -u ${{secrets.DOCKER_USERNAME}} -p ${{secrets.DOCKER_PASSWORD}}
         - name: Build for DockerHub
-          run: docker build -t ahylton/pulsetracker:0.1 .
+          run: docker build -t ahylton/pulsetracker:0.3 .
         - name: Push to DockerHub
-          run: docker push ahylton/pulsetracker:0.1
+          run: docker push ahylton/pulsetracker:0.3
         - name: Login to Github Packages
           run: docker login docker.pkg.github.com -u ${{secrets.GIT_USERNAME}} -p ${{secrets.GIT_PASSWORD}}
         - name: Build for Github Packages
-          run: docker build -t docker.pkg.github.com/akilhylton/pulsetracker:0.1 .
+          run: docker build -t docker.pkg.github.com/akilhylton/pulsetracker:0.3 .
