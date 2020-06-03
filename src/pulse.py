@@ -172,7 +172,7 @@ class Pulse(object):
             ]  # Filters values less than 9
             minima_mean = np.mean(final_minima)
             heart_rate = self.frame_rate * 60 / minima_mean
-            return heart_rate
+            return int(heart_rate)
 
         except:
             pass
