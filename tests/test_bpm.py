@@ -7,9 +7,10 @@ class TestBPM(unittest.TestCase):
         """
         This function assures that variances()
         returns a one dimensional matrix.
-        """
+		"""
+        testing_uid = '1kzd0DmeunLGEeB0nWLFFaIfuFZn'
         pulse = p.Pulse()
-        pulse.pulsebox_to_frames('FX4lQF6rwoc805hDjWBK9cECuro2')
+        pulse.pulsebox_to_frames(testing_uid)
         hr = pulse.bpm()
         self.assertTrue(int(hr) > 0 and int(hr) <= 220)
 

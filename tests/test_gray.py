@@ -8,8 +8,9 @@ class GrayTest(unittest.TestCase):
         This function assures that variances()
         returns a one dimensional matrix.
         """
+        testing_uid = '1kzd0DmeunLGEeB0nWLFFaIfuFZn'
         pulse = p.Pulse()
-        pulse.pulsebox_to_frames('FX4lQF6rwoc805hDjWBK9cECuro2')
+        pulse.pulsebox_to_frames(testing_uid)
         gray = pulse.frames_to_gray()
         self.assertEqual(len(gray), 300)
 

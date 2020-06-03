@@ -8,8 +8,9 @@ class SignalTest(unittest.TestCase):
         This function test to assure that
         signal_diff() returns a size of 200.
         """
+        testing_uid = '1kzd0DmeunLGEeB0nWLFFaIfuFZn'
         pulse = p.Pulse()
-        pulse.pulsebox_to_frames('FX4lQF6rwoc805hDjWBK9cECuro2')
+        pulse.pulsebox_to_frames(testing_uid)
         red = pulse.signal_diff()
         self.assertEqual(len(red), 200)
 

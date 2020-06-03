@@ -16,9 +16,9 @@ class TimeTest(unittest.TestCase):
 
     def testSysetemSpeed(self):
         """This function runs the entire heart rate system."""
+        testing_uid = '1kzd0DmeunLGEeB0nWLFFaIfuFZn'
         pulse = p.Pulse()
-        pulse.pulsebox_to_frames('FX4lQF6rwoc805hDjWBK9cECuro2')
+        pulse.pulsebox_to_frames(testing_uid)
         pulse.bpm()
-
 
 unittest.main()
