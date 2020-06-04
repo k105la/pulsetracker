@@ -3,10 +3,12 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-PulseTracker
-==================================
- 
-**PulseTracker** is a simple Python library used to monitor heart rate using video from a mobile phone.
+.. image:: images/PULSETRACKER-LOGO.png
+    :width: 600
+
+================================== 
+
+**PulseTracker** is a simple Python library used to monitor heart rate using video.
 
 -----
 
@@ -17,6 +19,19 @@ PulseTracker
   import pulse as p    
   pulse = p.Pulse()
   pulse.video_to_frames('./path/to/video.mp4')
+  pulse.bpm()
+
+
+-----
+
+**Usage of PulseTracker with PulseBox:**
+
+.. code-block:: python
+
+  import pulse as p
+  uid = ''
+  pulse = p.Pulse()
+  pulse.pulsebox_to_frames(uid)
   pulse.bpm()
 
 
