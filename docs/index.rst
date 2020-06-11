@@ -18,7 +18,7 @@
   
   import pulse as p    
   pulse = p.Pulse()
-  pulse.video_to_frames('./path/to/video.mp4')
+  pulse.video_to_frames("./path/to/video.mp4")
   pulse.bpm()
 
 
@@ -29,7 +29,7 @@
 .. code-block:: python
 
   import pulse as p
-  uid = ''
+  testing_uid = "1kzd0DmeunLGEeB0nWLFFaIfuFZn"
   pulse = p.Pulse()
   pulse.pulsebox_to_frames(uid)
   pulse.bpm()
@@ -45,5 +45,3 @@ This part of the documentation, which is mostly prose, begins with some backgrou
    intro 
    install 
    api
-
-

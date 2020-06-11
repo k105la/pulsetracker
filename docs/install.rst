@@ -14,7 +14,7 @@ Installing the development version
 
 .. code-block:: bash
 
-    git clone https://github.com/akilhylton/pulsetracker
+    git clone https://github.com/akilhylton/pulsetracker.git
     cd pulsetracker
-    pip install -r requirements.txt
-    sudo pip install -e .
+    pip3 install -r requirements.txt
+    sudo pip3 install -e .
