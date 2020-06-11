@@ -2,4 +2,5 @@ numpy
 opencv-python
 scipy
 pyrebase
+matplotlib
 sphinx_rtd_theme
