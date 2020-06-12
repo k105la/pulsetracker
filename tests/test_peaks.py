@@ -14,7 +14,7 @@ class TestPeaks(unittest.TestCase):
         pulse = p.Pulse()
         pulse.pulsebox_to_frames(testing_uid)
         peaks = pulse.get_peaks()
-        peaks_dim = peaks.reshape(-1, 1).shape[1]
+        peaks_dim = peaks.shape[1]
         self.assertEqual(peaks_dim, 1)
 
 

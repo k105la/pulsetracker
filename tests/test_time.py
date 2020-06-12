@@ -15,11 +15,11 @@ class TimeTest(unittest.TestCase):
         t = time.time() - self.startTime
         print("{}: {}".format(self.id(), t))
 
-    def testSysetemSpeed(self):
+    def testSystemSpeed(self):
         """This function runs the entire heart rate system."""
-        testing_uid = "1kzd0DmeunLGEeB0nWLFFaIfuFZn"
+        testing_video = "https://firebasestorage.googleapis.com/v0/b/pulse-box.appspot.com/o/data%2F1kzd0DmeunLGEeB0nWLFFaIfuFZn%2Fhr_test.MOV?alt=media&token=221ee115-5fb1-4c38-8264-5b1f8a859fda"
         pulse = p.Pulse()
-        pulse.pulsebox_to_frames(testing_uid)
+        pulse.video_to_frames(testing_video)
         pulse.bpm()
 
 
