@@ -1,6 +1,7 @@
 ![Imgur](https://i.imgur.com/E3s6RUi.png)
 
 ![PulseTracker Tests](https://github.com/akilhylton/pulsetracker/workflows/PulseTracker%20Tests/badge.svg)
+![PulseTracker Docs](https://img.shields.io/readthedocs/pulsetracker)
 
 Start here: [`pulse.py`](src/pulse.py)
 
