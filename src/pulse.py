@@ -59,7 +59,15 @@ class Pulse(object):
             self.remove_frames()
 
         for count in range(300):
-            cv.imwrite(f"./images/frame{count}.jpg", frame)
+            try:
+                cv.imwrite(f"./images/frame{count}.jpg", frame)
+            except cv.error as e:
+                print(
+                    "Error: Must provide a UID from \x1b]8;;https://pulse-box.firebaseapp.com/\apulsebox\x1b]8;;\a,",
+                    e,
+                )
+                break
+
             ret, frame = capture.read()
 
         capture.release()
@@ -78,14 +86,18 @@ class Pulse(object):
             self.remove_frames()
 
         for count in range(300):
-            cv.imwrite("./images/frame{}.jpg".format(count), frame)
+            try:
+                cv.imwrite("./images/frame{}.jpg".format(count), frame)
+            except cv.error as e:
+                print("Error: Must provide a video to this function,", e)
+                break
+
             ret, frame = capture.read()
             if ret is not True:
                 if count / self.frame_rate < 10:
                     self.remove_frames()
                     print(
-                        "Your video was {} seconds but video length must be 10 seconds \
-                            long.".format(
+                        "Your video was {} seconds but video length must be 10 seconds long.".format(
                             count / self.frame_rate
                         )
                     )
