@@ -3,12 +3,11 @@
 ![PulseTracker Tests](https://github.com/akilhylton/pulsetracker/workflows/PulseTracker%20Tests/badge.svg)
 ![PulseTracker Docs](https://img.shields.io/readthedocs/pulsetracker)
 
-Start here: [`pulse.py`](src/pulse.py)
 
 ## 💭 Background
 pulsetracker is an open source tool built for monitoring heart rate. The goal here is to have a low cost and widely accessible way to measure someones heart rate. It uses a touch-based system for generating heart rate values. In contrast to it's counterpart(touchless-based systems) it is a far more accurate and less sensitive to enviornmental conditions.  
 
-### Usage
+## Usage
 After cloning this repository and changing directories to it.
 
 #### 1. Install the dependencies
@@ -21,7 +20,7 @@ $ make
 ```
 See example of usage in examples folder.
 
-### Testing 
+## Testing 
 #### Local Testing
 ```
 $ sudo sh install.sh && sudo make test
@@ -31,7 +30,18 @@ $ sudo sh install.sh && sudo make test
 $ sudo sh run_docker_test.sh
 ```
 
-### Documentation
+## Documentation
+We use [sphinx](https://www.sphinx-doc.org/en/master/) to build our documentation, below is a quick guide to getting started. 
 1. `$ cd docs`
 2. `$ make html`
 3. `$ open _build/html/index.html`
+
+Directory Structure
+------
+    .
+    ├── docs                # Sphinx documentation folder
+    ├── examples            # The example code 
+    ├── src                 # The source code for the library
+    └── tests               # Unit tests and system tests
+
+To understand how the library works see [`pulse.py`](src/pulse.py)
