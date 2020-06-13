@@ -14,8 +14,7 @@ class TestVariances(unittest.TestCase):
         pulse = p.Pulse()
         pulse.pulsebox_to_frames(testing_uid)
         v = pulse.variances()
-        v_dim = v.reshape(-1, 1).shape[1]
+        v_dim = v.shape[1]
         self.assertEqual(v_dim, 1)
-
 
 unittest.main()

@@ -148,7 +148,7 @@ class Pulse(object):
         try:
             red = self.signal_diff()
             peaks, _ = find_peaks(red, distance=dist)
-            return peaks
+            return peaks.reshape(-1, 1)
 
         except:
             pass
@@ -166,7 +166,7 @@ class Pulse(object):
                     dist = np.asarray(self.distance)
                     self.sigmoids.append(abs(np.square(abs(dist[i] - np.mean(dist)))))
             sig = np.asarray(self.sigmoids)
-            return sig
+            return sig.reshape(-1, 1)
 
         except:
             pass
