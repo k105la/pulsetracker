@@ -31,10 +31,19 @@ $ sudo sh run_docker_test.sh
 ```
 
 ## Documentation
-We use [sphinx](https://www.sphinx-doc.org/en/master/) to build our documentation, below is a quick guide to getting started. 
-1. `$ cd docs`
-2. `$ make html`
-3. `$ open _build/html/index.html`
+We use [sphinx](https://www.sphinx-doc.org/en/master/) to build our documentation based on rST files and comments in the code, below is a quick guide to getting started. 
+``` 
+cd docs
+make html
+```
+
+This will output the documentation to `docs/_build/html`. 
+Now to view built documentation run `open _build/html/index.html`.
+
+
+## Contributing 
+
+Contributions are welcome! Please read our [Code of Conduct](CODE_OF_CONDUCT.md) and [how to contribute](CONTRIBUTING.md) before contributing to help this project stay welcoming.
 
 Directory Structure
 ------
@@ -45,3 +54,9 @@ Directory Structure
     └── tests               # Unit tests and system tests
 
 To understand how the library works see [`pulse.py`](src/pulse.py)
+
+## License 
+
+MIT License
+
+Copyright (c) 2020 Akil M Hylton 
