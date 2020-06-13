@@ -31,7 +31,7 @@
   import pulse as p
   testing_uid = "1kzd0DmeunLGEeB0nWLFFaIfuFZn"
   pulse = p.Pulse()
-  pulse.pulsebox_to_frames(uid)
+  pulse.pulsebox_to_frames(testing_uid)
   pulse.bpm()
 
 
