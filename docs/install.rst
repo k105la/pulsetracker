@@ -6,8 +6,8 @@ Installing with Docker:
 
 .. code-block:: bash
     
-    docker pull docker.pkg.github.com/akilhylton/pulsetracker/pulsetracker:0.3
-    docker run -it docker.pkg.github.com/akilhylton/pulsetracker/pulsetracker:0.3
+    docker pull docker.pkg.github.com/akilhylton/pulsetracker/pulsetracker:0.4
+    docker run -it docker.pkg.github.com/akilhylton/pulsetracker/pulsetracker:0.4
 
 
 Installing the development version
