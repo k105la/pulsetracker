@@ -3,4 +3,5 @@ opencv-python
 scipy
 pyrebase
 matplotlib
+Flask
 sphinx_rtd_theme
