@@ -11,7 +11,8 @@ def view_heartrate(uid):
     pulse = p.Pulse()
     pulse.pulsebox_to_frames(uid)
     hr = pulse.bpm()
-    return f'pulse: {hr}'
+    return f'{hr}bpm'
+
 
 
 @app.route('/api/time')
