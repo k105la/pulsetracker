@@ -9,6 +9,7 @@ import Home from "./components/Home/Home";
 import PrivateRoute from "./components/PrivateRoute";
 
 
+
 class App extends Component {
   constructor (props){
     super(props);
@@ -36,6 +37,7 @@ class App extends Component {
     <AuthProvider>
       <Router>
         <div>
+
           <PrivateRoute exact path="/" component={Home} />
           <Route exact path="/login" component={Login} />
         </div>
