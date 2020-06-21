@@ -2,26 +2,39 @@ import React, { Component } from "react";
 import {app} from "../Auth/config/fire";
 import firebase from "firebase";
 import axios from "axios";
-import Button from 'react-bootstrap/Button'
-import Navbar from 'react-bootstrap/Navbar'
-import logo from './logo/LOGO.png'
+import Button from '@material-ui/core/Button';
+import logo from './images/LOGO.png'
+import IconButton from '@material-ui/core/IconButton';
+import PhotoCamera from '@material-ui/icons/PhotoCamera';
+import CloudUploadIcon from '@material-ui/icons/CloudUpload';
+
+import "./Home.css"
 
 class Home extends Component {
   componentDidMount() { 
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
         this.setState({user: user});
-        axios.get(`http://127.0.0.1:5000/${user.uid}`)
-        .then(res => {
-          const heartrate = res.data;
-          this.setState({hr: heartrate})
-          console.log(heartrate)
-         })
        } else {
          this.setState({user: null})
-         this.setState({hr: 0})
        }
     })
+ }
+
+ uploadToFirebase() {
+   
+  firebase.auth().onAuthStateChanged((user) => {
+    if (user) {
+      axios.get(`http://127.0.0.1:5000/${user.uid}`)
+      .then(res => {
+        const heartrate = res.data;
+        this.setState({hr: heartrate})
+        console.log(heartrate);
+       })
+     } else {
+       this.setState({hr: 0});
+     }
+  })
  }
   constructor(props) {
   super(props);
@@ -29,32 +42,46 @@ class Home extends Component {
     user: {},
     hr: 0
     }
+    this.uploadToFirebase = this.uploadToFirebase.bind(this);
   }
   render() {
   return (
-    <div>
- <Navbar bg="dark">
-    <Navbar.Brand href="#">
-      <img
+
+
+  <div className="container">
+  <img
         src={logo}
-        width="175"
-        height="30"
+        width="100%"
+        height="50%"
         className="d-inline-block align-top"
         alt="React Bootstrap logo"
       />
-    </Navbar.Brand>
-  </Navbar>
-      <h1>Home</h1>
-  <h3> {this.state.user.displayName} <br/>heart rate: {this.state.hr} </h3>
-  <input
-              type="file"
-         
-              name="file"
-              accept="video/*"
-              capture="environment"
-              id="upload"
-            />
-      <Button variant="outline-dark" onClick={() => app.auth().signOut()}>Sign out</Button>
+       <h2> Welcome, {this.state.user.displayName} </h2>
+
+      <p className="top-text">Let's check your pulse! </p>
+      <p>Place your finger over your camera <br/> for 15-30 seconds</p>
+
+  <h1 className="heartrateData"> {this.state.hr}</h1>
+  <p> <b> Heart Beats per Minute </b><br/> were logged by the algorithm</p>
+  <input accept="image/*" className="upload-input" id="icon-button-file" type="file" />
+      <label htmlFor="icon-button-file">
+        <IconButton color="default" aria-label="upload picture" component="span">
+          <PhotoCamera />
+        </IconButton>
+      </label>
+<br/>
+      <Button
+        variant="contained"
+        color="default"
+        onClick={this.uploadToFirebase}
+        startIcon={<CloudUploadIcon />}
+      >
+        Upload
+      </Button>
+      <br/>
+      <Button onClick={() => app.auth().signOut()}>Sign out</Button>
+
+
     </div>
   );
   }

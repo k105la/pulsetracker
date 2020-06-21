@@ -4,7 +4,7 @@ import {app} from "../Auth/config/fire";
 import { AuthContext } from "../Auth/Auth.js";
 import firebase from "firebase";
 import Button from 'react-bootstrap/Button';
-import image from "../Home/logo/LOGO.png"
+import image from "./logo/LOGO.png"
 import "./Login.css"
 
 const auth = app.auth();
@@ -34,7 +34,7 @@ const Login = ({ history }) => {
 
     return (
         <div className="container">
-            <img src={image} width="100%" alt="pulsetracker" />
+            <img className="pulse-logo" src={image} width="100%" alt="pulsetracker" />
             <Button variant="outline-light" onClick={handleLogin} size="lg">Continue with Google</Button>
         </div>
       );
