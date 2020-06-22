@@ -35,6 +35,7 @@ const Login = ({ history }) => {
     return (
         <div className="container">
             <img className="pulse-logo" src={image} width="100%" alt="pulsetracker" />
+            <br/>
             <Button variant="outline-light" onClick={handleLogin} size="lg">Continue with Google</Button>
         </div>
       );

@@ -1,5 +1,4 @@
 import os
-import time 
 from flask import Flask
 from flask_cors import CORS
 import pulse as p
@@ -14,9 +13,3 @@ def view_heartrate(uid):
     hr = pulse.bpm()
     os.system("rm -rf images")
     return f'{hr}'
-
-
-
-@app.route('/api/time')
-def get_current_time():
-    return (f'time: {time.time()}')

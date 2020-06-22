@@ -8,3 +8,24 @@
 .heartrateData {
     font-size: 5em;
 }
+
+.pulse {
+    width: 100%;
+    margin: 1em auto;
+
+}
+
+.camara-button {
+    margin: 1em auto 1.5em auto;
+}
+
+#sign-out-button {
+    margin-left: 1em;
+}
+
+@media screen and (min-width: 768px) {
+    .pulse {
+      width: 60% !important;
+      margin: 1.5em auto 1em auto; 
+    }
+  }

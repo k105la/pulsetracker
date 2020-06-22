@@ -53,7 +53,7 @@ class Home extends Component {
         src={logo}
         width="100%"
         height="50%"
-        className="d-inline-block align-top"
+        className="pulse d-inline-block align-top"
         alt="React Bootstrap logo"
       />
        <h2> Welcome, {this.state.user.displayName} </h2>
@@ -64,13 +64,14 @@ class Home extends Component {
   <h1 className="heartrateData"> {this.state.hr}</h1>
   <p> <b> Heart Beats per Minute </b><br/> were logged by the algorithm</p>
   <input accept="image/*" className="upload-input" id="icon-button-file" type="file" />
-      <label htmlFor="icon-button-file">
+      <label htmlFor="icon-button-file" className="camara-button">
         <IconButton color="default" aria-label="upload picture" component="span">
           <PhotoCamera />
         </IconButton>
       </label>
 <br/>
       <Button
+        className="upload-button"
         variant="contained"
         color="default"
         onClick={this.uploadToFirebase}
@@ -78,8 +79,8 @@ class Home extends Component {
       >
         Upload
       </Button>
-      <br/>
-      <Button onClick={() => app.auth().signOut()}>Sign out</Button>
+      
+      <Button id="sign-out-button" onClick={() => app.auth().signOut()}>Sign out</Button>
 
 
     </div>
