@@ -17,12 +17,12 @@ class Home extends Component {
       user: {},
       hr: 0,
       prog: 0
-      }
+    }
       this.retrievePulse = this.retrievePulse.bind(this);
       this.uploadVideoToFirebase = this.uploadVideoToFirebase.bind(this);
-    }
+  }
   
-  componentDidMount() { 
+ componentDidMount() { 
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
         this.setState({user: user});
@@ -76,24 +76,26 @@ class Home extends Component {
 
  retrievePulse() {
   firebase.auth().onAuthStateChanged((user) => {
-    if (user) {
-      axios.get(`http://127.0.0.1:5000/${user.uid}`)
-      .then(res => {
-        const heartrate = res.data;
-        this.setState({hr: heartrate})
-        console.log(heartrate);
-       })
-     } else {
-       this.setState({hr: 0});
-     }
+    this.setState({loading: true}, () => {
+      if (user) {
+        axios.get(`http://127.0.0.1:5000/${user.uid}`)
+        .then(res => {
+          const heartrate = res.data;
+          this.setState({hr: heartrate})
+          this.setState({loading: false})
+          console.log(heartrate);
+         })
+       } else {
+         this.setState({hr: 0});
+       }
+    })
   })
  }
 
   render() {
+    const loading = this.state.loading;
     const progessValue = this.state.prog;
   return (
-
-
   <div className="container">
       <img
         src={logo}
@@ -111,7 +113,7 @@ class Home extends Component {
       <p className="top-text">Let's check your pulse! </p>
       <p>Place your finger over your camera <br/> for 15-30 seconds</p>
 
-  <h1 className="heartrateData"> {this.state.hr}</h1>
+  {loading ? <CircularProgress /> : <h1 className="heartrateData"> {this.state.hr}</h1>}
   <p> <b> Heart Beats per Minute </b><br/> were logged by the algorithm</p>
   <input accept="video/*" onChange={this.uploadVideoToFirebase} className="upload-input" id="icon-button-file" type="file" ref={(ref) => this.fileUpload = ref}/>
       <label htmlFor="icon-button-file" className="camara-button">

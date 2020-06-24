@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
-import './App.css';
 import firebase from "firebase";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { AuthProvider } from "./components/Auth/Auth";
 import Login from "./components/Login/Login";
 import Home from "./components/Home/Home";
 import PrivateRoute from "./components/PrivateRoute";
-
+import './App.css';
 
 
 class App extends Component {
@@ -34,7 +33,6 @@ class App extends Component {
     <AuthProvider>
       <Router>
         <div>
-
           <PrivateRoute exact path="/" component={Home} />
           <Route exact path="/login" component={Login} />
         </div>
