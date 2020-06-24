@@ -25,6 +25,7 @@ class Home extends Component {
  componentDidMount() { 
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
+        document.getElementById("user-uid").textContent = user.uid;
         this.setState({user: user});
        } else {
          this.setState({user: null})
@@ -108,13 +109,23 @@ class Home extends Component {
     ? <div className="progress-circle"> <CircularProgress variant="static" value={this.state.prog} /> </div>
     : <div>
 
-       <h2> Welcome, {this.state.user.displayName} </h2>
+       <h2 className="welcome-text"> Welcome, {this.state.user.displayName} </h2>
+
+       <div className="uid hidden" id="uid-badge">
+        <span className="uid-tag badge badge-pill badge-dark">UID</span>
+        <span id="user-uid"></span>
+        <br/>
+        <button className="btn btn-outline-dark btn-sm" id="copy-button">
+          Copy UID
+        </button>
+      </div>
 
       <p className="top-text">Let's check your pulse! </p>
       <p>Place your finger over your camera <br/> for 15-30 seconds</p>
-
+ <div className="pulse-view">
   {loading ? <CircularProgress /> : <h1 className="heartrateData"> {this.state.hr}</h1>}
   <p> <b> Heart Beats per Minute </b><br/> were logged by the algorithm</p>
+  </div>
   <input accept="video/*" onChange={this.uploadVideoToFirebase} className="upload-input" id="icon-button-file" type="file" ref={(ref) => this.fileUpload = ref}/>
       <label htmlFor="icon-button-file" className="camara-button">
         <IconButton color="default" aria-label="upload picture" component="span">
