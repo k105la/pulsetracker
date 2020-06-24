@@ -14,6 +14,12 @@
     margin: 1em auto;
 
 }
+.progress-circle {
+    position: absolute; 
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
 
 .camara-button {
     margin: 1em auto 1.5em auto;
