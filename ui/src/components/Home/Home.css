@@ -4,10 +4,14 @@
 .top-text {
     font-weight: bold;
 }
+.pulse-data-spinner {
+    margin: 2.5em auto 2.5em auto;
+}
 
-.heartrateData {
+.pulse-data {
     color: dodgerblue;
     font-size: 5em;
+    margin: 0.1em auto;
 }
 .pulse-view {
     border-color: dodgerblue;
@@ -15,6 +19,7 @@
     max-width:250px;
     margin:0 auto;
     border-width: 0.5em;
+    box-shadow: 0 8px 6px -6px black;
 }
 .pulse {
     width: 100%;
@@ -29,20 +34,21 @@
 }
 
 .camara-button {
-    margin: 1em auto 1.5em auto;
+    margin: 2em auto 1em auto;
 }
 
-#sign-out-button {
-    margin-left: 1em;
-}
-
-#copy-button {
-    margin: 1em auto 1.5em auto;
-}
 .uid {
-    margin-top: 1em;
+    margin: 1em auto 1em auto;
+}
+.stick-to-bottom {
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
 }
 #user-uid {
+    font-size: 12px;
     font-weight: bold;
     margin-left: 0.5em;
 }
@@ -53,8 +59,10 @@
 
 @media screen and (min-width: 768px) {
     .pulse {
-      width: 60% !important;
+      width: 45% !important;
       margin: 1.5em auto 1em auto; 
     }
-
+    .camara-button {
+        margin: 2em auto 2em auto;
+    }
   }
