@@ -52,7 +52,8 @@ Directory Structure
     ├── docs                # Sphinx documentation folder
     ├── examples            # The example code 
     ├── src                 # The source code for the library
-    └── tests               # Unit tests and system tests
+    ├── tests               # Unit tests and system tests
+    └── ui                  # The UI
 
 To understand how the library works see [`pulse.py`](src/pulse.py)
 
