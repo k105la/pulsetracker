@@ -1,0 +1,23 @@
+name: PulseTracker UI test
+
+on:
+  push:
+    branches:
+    - master
+    - ui
+  pull_request:
+    branches:
+    - master
+    - ui
+    
+jobs:
+   build:
+       name: Checkout master
+       runs-on: ubuntu-18.04
+
+       steps:
+       - uses: actions/checkout@v2
+       - name: Install UI dependencies
+         run: cd ui && yarn 
+       - name: Run UI Test
+         run: yarn test
