@@ -130,7 +130,7 @@ class Home extends Component {
   </div>
   <input accept="video/*" onChange={this.uploadVideoToFirebase} className="upload-input" id="icon-button-file" type="file" ref={(ref) => this.fileUpload = ref}/>
       <label htmlFor="icon-button-file" className="camara-button">
-        <IconButton color="default" aria-label="upload picture" component="span" >
+        <IconButton data-testid="camera-button" color="default" aria-label="upload picture" component="span" >
           <PhotoCamera style={styles.largeIcon}/>
         </IconButton>
       </label>
@@ -140,9 +140,9 @@ class Home extends Component {
   </div>
   }
      <BottomNavigation className="stick-to-bottom" showLabels>
-      <BottomNavigationAction label="Copy UID" icon={<FileCopyIcon />} />
-      <BottomNavigationAction label="Upload" onClick={this.retrievePulse} icon={<CloudUploadIcon />} />    
-      <BottomNavigationAction label="Sign out" onClick={() => app.auth().signOut()} icon={<ExitToAppIcon />} />
+      <BottomNavigationAction data-testid="copy-button" label="Copy UID" icon={<FileCopyIcon />} />
+      <BottomNavigationAction data-testid="upload-button" label="Upload" onClick={this.retrievePulse} icon={<CloudUploadIcon />} />    
+      <BottomNavigationAction data-testid="sign-out-button" label="Sign out" onClick={() => app.auth().signOut()} icon={<ExitToAppIcon />} />
     </BottomNavigation>
     </div>
     );
