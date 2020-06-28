@@ -20,4 +20,4 @@ jobs:
        - name: Install UI dependencies
          run: cd ui && yarn 
        - name: Run UI Test
-         run: yarn test
+         run: cd ui && yarn test
