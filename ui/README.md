@@ -1,7 +1,29 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![Imgur](https://i.imgur.com/E3s6RUi.png)
+![ui test](https://github.com/akilhylton/pulsetracker/workflows/ui%20test/badge.svg)
+
+An open source tool built for monitoring heart rate and this is the user interface code, a simple web application built with ReactJS, Material UI and Firebase. 
+
+## Front-End Overview
+
+Technology Stack: React, Material UI, Firebase
+
+- Frontend: [React](https://github.com/facebook/react)
+- Backend: [Firebase](https://firebase.google.com/)
+ 
+### Material UI
+
+- Material UI: [Installation](https://material-ui.com/getting-started/installation/) and [Usage](https://material-ui.com/getting-started/usage/)
+- Material Design: [Color System](https://material.io/design/color/)
+- Material Design: [Accessibility](https://material.io/design/usability/accessibility.html)
+- Udemy: [Material UI Courses](https://www.udemy.com/topic/material-design/)
+
+### React
+
+- Tutorial: [Intro to React](https://reactjs.org/tutorial/tutorial.html)
+- Udemy: [React Courses](https://www.udemy.com/topic/react/)
+- PluralSight: [React Paths and Courses](https://www.pluralsight.com/search?q=react)
 
 ## Available Scripts
-
 In the project directory, you can run:
 
 ### `yarn start`
