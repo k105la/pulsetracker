@@ -4,11 +4,11 @@ on:
   push:
     branches:
     - master
-    - ui
+    - ui-test
   pull_request:
     branches:
     - master
-    - ui
+    - ui-test
     
 jobs:
    build:
