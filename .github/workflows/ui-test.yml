@@ -10,7 +10,7 @@ on:
     - master
     - ui
     
-  jobs:
+jobs:
    build:
        name: Checkout master
        runs-on: ubuntu-18.04
