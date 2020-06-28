@@ -3,6 +3,7 @@
 ![PulseTracker Tests](https://github.com/akilhylton/pulsetracker/workflows/PulseTracker%20Tests/badge.svg)
 ![ui test](https://github.com/akilhylton/pulsetracker/workflows/ui%20test/badge.svg)
 ![PulseTracker Docs](https://img.shields.io/readthedocs/pulsetracker)
+[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 
 
 ## 💭 Background

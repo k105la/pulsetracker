@@ -1,19 +1,19 @@
 .container {
-    text-align: center;
-    justify-content: center;    
+  text-align: center;
+  justify-content: center;
 }
 .pulse-logo {
-    width: 100%;
-    margin: 2.5em auto 1em auto;
+  width: 100%;
+  margin: 2.5em auto 1em auto;
 }
 .pulse-intro-text {
-    color: white;
-    font-weight: 400;
-    font-size: 1.4rem;
-    line-height: 1.6;
-    margin-bottom: 0.5em;
+  color: white;
+  font-weight: 400;
+  font-size: 1.4rem;
+  line-height: 1.6;
+  margin-bottom: 0.5em;
 }
 .sign-in-button {
-    color: white !important; 
-    border: 1px solid white !important;
+  color: white !important;
+  border: 1px solid white !important;
 }
