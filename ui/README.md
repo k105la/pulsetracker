@@ -12,6 +12,11 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.<br />
 You will also see any lint errors in the console.
 
+
+### `yarn start-api`
+Runs the server with the heart rate algorithm on it.<br />
+Request retrieved from http://127.0.0.1:5000/{user_uid}
+
 ### `yarn test`
 
 Launches the test runner in the interactive watch mode.<br />
