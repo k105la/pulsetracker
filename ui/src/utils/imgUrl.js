@@ -1,7 +1,7 @@
-const baseUrl = 'https://i.imgur.com/'
+const baseUrl = 'https://i.imgur.com/';
 
 export const Logo = `${baseUrl}ZnWnu8a.png`;
 
-const imgUrl = { Logo }
+const imgUrl = { Logo };
 
 export default imgUrl;

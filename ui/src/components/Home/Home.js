@@ -9,7 +9,7 @@ import FileCopyIcon from '@material-ui/icons/FileCopy';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import BottomNavigation from '@material-ui/core/BottomNavigation';
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
-import { Logo } from '../../utils/imgUrl'
+import { Logo } from '../../utils/imgUrl';
 import './Home.css';
 
 const styles = {
@@ -76,29 +76,26 @@ class Home extends Component {
         });
       }
     });
-}
+  }
 
   retrievePulse() {
     firebase.auth().onAuthStateChanged((user) => {
-	this.setState({ loading: true }, () =>  {
+      this.setState({ loading: true }, () => {
         if (user) {
-          fetch(`https://pulsetracker-api.herokuapp.com/${user.uid}`).then(res => res.json())
-            .then(
-               (result) => {
-		const heartrate = result.pulse;
-		this.setState({ hr: heartrate })       
-          	this.setState({ loading: false });
-		console.log(heartrate)	
-	       });
-	     }
-	else {
-        	this.setState({ hr: 0 });
-	}	
-        })
-      })
-}
-
-
+          fetch(`https://pulsetracker-api.herokuapp.com/${user.uid}`)
+            .then((res) => res.json())
+            .then((result) => {
+              const heartrate = result.pulse;
+              this.setState({ hr: heartrate });
+              this.setState({ loading: false });
+              console.log(heartrate);
+            });
+        } else {
+          this.setState({ hr: 0 });
+        }
+      });
+    });
+  }
 
   render() {
     const loading = this.state.loading;

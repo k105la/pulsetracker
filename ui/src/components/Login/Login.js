@@ -4,7 +4,7 @@ import { app } from '../Auth/config/fire';
 import { AuthContext } from '../Auth/Auth.js';
 import firebase from 'firebase';
 import Button from '@material-ui/core/Button';
-import { Logo } from '../../utils/imgUrl'
+import { Logo } from '../../utils/imgUrl';
 import './Login.css';
 
 const auth = app.auth();
