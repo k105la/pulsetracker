@@ -1,10 +1,14 @@
 import os
-from flask import Flask, jsonify
+from flask import Flask, jsonify, render_template
 from flask_cors import CORS
 import pulse as p
 
 app = Flask(__name__)
 CORS(app)
+
+@app.route('/')
+def welcome_screen():
+    return render_template('index.html')
 
 @app.route('/<string:uid>', methods=['GET'])
 def view_heartrate(uid):
