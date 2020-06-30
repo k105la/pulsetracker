@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { app } from '../Auth/config/fire';
 import firebase from 'firebase';
-import axios from 'axios';
 import IconButton from '@material-ui/core/IconButton';
 import PhotoCamera from '@material-ui/icons/PhotoCamera';
 import CloudUploadIcon from '@material-ui/icons/CloudUpload';
@@ -77,24 +76,29 @@ class Home extends Component {
         });
       }
     });
-  }
+}
 
   retrievePulse() {
     firebase.auth().onAuthStateChanged((user) => {
-      this.setState({ loading: true }, () => {
+	this.setState({ loading: true }, () =>  {
         if (user) {
-          axios.get(`http://127.0.0.1:5000/${user.uid}`).then((res) => {
-            const heartrate = res.data;
-            this.setState({ hr: heartrate });
-            this.setState({ loading: false });
-            console.log(heartrate);
-          });
-        } else {
-          this.setState({ hr: 0 });
-        }
-      });
-    });
-  }
+          fetch(`https://pulsetracker-api.herokuapp.com/${user.uid}`).then(res => res.json())
+            .then(
+               (result) => {
+		const heartrate = result.pulse;
+		this.setState({ hr: heartrate })       
+          	this.setState({ loading: false });
+		console.log(heartrate)	
+	       });
+	     }
+	else {
+        	this.setState({ hr: 0 });
+	}	
+        })
+      })
+}
+
+
 
   render() {
     const loading = this.state.loading;
