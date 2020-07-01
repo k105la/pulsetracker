@@ -42,7 +42,7 @@ make html
 This will output the documentation to `docs/_build/html`. 
 Now to view built documentation run `open _build/html/index.html`.
 
-![pulsetracker on readthedocs](https://pulsetracker.readthedocs.io/en/latest/)
+[pulsetracker on readthedocs](https://pulsetracker.readthedocs.io/en/latest/)
 
 ## Contributing 
 
