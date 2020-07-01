@@ -97,18 +97,16 @@ class Home extends Component {
     });
   }
 
-
-copyUID() {
-    let copyText = document.getElementById('user-uid')
-    let textArea = document.createElement('textarea')
+  copyUID() {
+    let copyText = document.getElementById('user-uid');
+    let textArea = document.createElement('textarea');
     textArea.value = copyText.textContent;
-    console.log(textArea.value)
-    document.body.appendChild(textArea)
-    textArea.select()
-    document.execCommand('copy')
-    textArea.remove()
-}
-
+    console.log(textArea.value);
+    document.body.appendChild(textArea);
+    textArea.select();
+    document.execCommand('copy');
+    textArea.remove();
+  }
 
   render() {
     const loading = this.state.loading;
@@ -182,7 +180,7 @@ copyUID() {
           <BottomNavigationAction
             data-testid="copy-button"
             label="Copy UID"
-			onClick={this.copyUID}
+            onClick={this.copyUID}
             icon={<FileCopyIcon />}
           />
           <BottomNavigationAction
