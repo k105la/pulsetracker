@@ -97,6 +97,19 @@ class Home extends Component {
     });
   }
 
+
+copyUID() {
+    let copyText = document.getElementById('user-uid')
+    let textArea = document.createElement('textarea')
+    textArea.value = copyText.textContent;
+    console.log(textArea.value)
+    document.body.appendChild(textArea)
+    textArea.select()
+    document.execCommand('copy')
+    textArea.remove()
+}
+
+
   render() {
     const loading = this.state.loading;
     const progessValue = this.state.prog;
@@ -169,6 +182,7 @@ class Home extends Component {
           <BottomNavigationAction
             data-testid="copy-button"
             label="Copy UID"
+			onClick={this.copyUID}
             icon={<FileCopyIcon />}
           />
           <BottomNavigationAction
