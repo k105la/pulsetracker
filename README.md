@@ -32,6 +32,7 @@ $ sudo sh run_docker_test.sh
 ```
 
 ## Documentation
+
 We use [sphinx](https://www.sphinx-doc.org/en/master/) to build our documentation based on rST files and comments in the code, below is a quick guide to getting started. 
 ``` 
 cd docs
@@ -41,6 +42,7 @@ make html
 This will output the documentation to `docs/_build/html`. 
 Now to view built documentation run `open _build/html/index.html`.
 
+![pulsetracker on readthedocs](pulsetracker.readthedocs.io/)
 
 ## Contributing 
 
