@@ -16,6 +16,7 @@ setup(
         'CoronaTracker': 'https://coronatrackerbeta.com/',
         'Source Code': 'https://github.com/akilhylton/pulsetracker',
         },
+    python_requires='>=3',
     install_requires=[
         'numpy', 
         'opencv-python',
