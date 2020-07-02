@@ -10,6 +10,5 @@ test('renders Home component', () => {
   ).toBeInTheDocument();
   fireEvent.click(getByTestId('camera-button'));
   fireEvent.click(getByTestId('upload-button'));
-  fireEvent.click(getByTestId('copy-button'));
   fireEvent.click(getByTestId('sign-out-button'));
 });
