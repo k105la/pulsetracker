@@ -10,15 +10,25 @@ on:
     
 jobs:
    tests:
-       name: Checkout master
+       name: Unit Tests
        runs-on: ubuntu-18.04
        steps:
        - uses: actions/checkout@v2
        - name: Run Unit Test
          run: sh run_docker_test.sh
 
+   ui-tests: 
+       name: UI Tests
+       runs-on: ubuntu-18.04
+       steps:
+       - uses: actions/checkout@v2
+       - name: Install UI dependencies
+         run: cd ui && yarn 
+       - name: Run UI Test
+         run: cd ui && yarn test
+   
    api-test:
-       name: Test
+       name: API Test
        runs-on: ubuntu-18.04
        env: 
            TEST_UID: 1kzd0DmeunLGEeB0nWLFFaIfuFZn  
