@@ -12,6 +12,7 @@ setup(
     package_dir={"": "src"},
     author='Akil M Hylton',
     author_email='hyltonakil@gmail.com',
+    url='pulsetrackerapp.com'
     project_urls={
         'CoronaTracker': 'https://coronatrackerbeta.com/',
         'Source Code': 'https://github.com/akilhylton/pulsetracker',
