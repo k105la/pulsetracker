@@ -7,12 +7,20 @@ on:
   pull_request:
     branches:
     - master
-
+    
 jobs:
-   build:
+   tests:
        name: Checkout master
        runs-on: ubuntu-18.04
        steps:
        - uses: actions/checkout@v2
        - name: Run Unit Test
          run: sh run_docker_test.sh
+
+   api-test:
+       name: Test
+       runs-on: ubuntu-18.04
+       env: 
+           TEST_UID: 1kzd0DmeunLGEeB0nWLFFaIfuFZn  
+       steps:
+         - run: curl https://pulsetracker-api.herokuapp.com/${{env.TEST_UID}}
