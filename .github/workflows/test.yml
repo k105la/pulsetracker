@@ -49,7 +49,7 @@ jobs:
           run: docker push ahylton/pulsetracker:latest
           
         - name: Login to Github Packages
-          run: docker login docker.pkg.github.com -u ${{secrets.GIT_USERNAME}} -p ${{secrets.GIT_PASSWORD}}
+          run: docker login docker.pkg.github.com -u ${{secrets.GIT_USERNAME}} -p ${{secrets.DOCKERHUB_TOKEN}}
         - name: Build for Github Packages
           run: docker build -t docker.pkg.github.com/akilhylton/pulsetracker/pulsetracker:latest .
         - name: Push build to GitHub Packages
