@@ -51,9 +51,9 @@ jobs:
         - name: Login to Github Packages
           run: docker login docker.pkg.github.com -u ${{secrets.GIT_USERNAME}} -p ${{secrets.GIT_PASSWORD}}
         - name: Build for Github Packages
-          run: docker build -t docker.pkg.github.com/akilhylton/pulsetracker:latest .
+          run: docker build -t docker.pkg.github.com/akilhylton/pulsetracker/pulsetracker:latest .
         - name: Push build to GitHub Packages
-          run: docker push docker.pkg.github.com/akilhylton/pulsetracker:latest
+          run: docker push docker.pkg.github.com/akilhylton/pulsetracker/pulsetracker:latest
     
    prettier:
       name: Code Formatting
