@@ -7,12 +7,64 @@ on:
   pull_request:
     branches:
     - master
-
+    
 jobs:
-   build:
-       name: Checkout master
+   tests:
+       name: Unit Tests
        runs-on: ubuntu-18.04
        steps:
        - uses: actions/checkout@v2
        - name: Run Unit Test
          run: sh run_docker_test.sh
+
+   ui-tests: 
+       name: UI Tests
+       runs-on: ubuntu-18.04
+       steps:
+       - uses: actions/checkout@v2
+       - name: Install UI dependencies
+         run: cd ui && yarn 
+       - name: Run UI Test
+         run: cd ui && yarn test
+   
+   api-test:
+       name: API Test
+       runs-on: ubuntu-18.04
+       env: 
+           TEST_UID: 1kzd0DmeunLGEeB0nWLFFaIfuFZn  
+       steps:
+         - run: curl https://pulsetracker-api.herokuapp.com/${{env.TEST_UID}}
+
+   docker-push:
+        name: docker push
+        runs-on: ubuntu-18.04
+        steps:
+        - uses: actions/checkout@v2     
+                   
+        - name: Login into DockerHub
+          run: docker login -u ${{secrets.DOCKER_USERNAME}} -p ${{secrets.DOCKER_PASSWORD}}
+        - name: Build for DockerHub
+          run: docker build -t ahylton/pulsetracker:latest .
+        - name: Push to DockerHub
+          run: docker push ahylton/pulsetracker:latest
+          
+        - name: Login to Github Packages
+          run: docker login docker.pkg.github.com -u ${{secrets.GIT_USERNAME}} -p ${{secrets.DOCKERHUB_TOKEN}}
+        - name: Build for Github Packages
+          run: docker build -t docker.pkg.github.com/akilhylton/pulsetracker/pulsetracker:latest .
+        - name: Push build to GitHub Packages
+          run: docker push docker.pkg.github.com/akilhylton/pulsetracker/pulsetracker:latest
+    
+   prettier:
+      name: Code Formatting
+      runs-on: ubuntu-latest
+      steps:
+      - uses: actions/checkout@v2
+        with:
+         # Make sure the actual branch is checked out when running on pull requests
+          ref: ${{ github.head_ref }}
+      - name: Prettify code
+        uses: creyD/prettier_action@v2.2
+        with:
+          # This part is also where you can pass other options, for example:
+          prettier_options: --write --single-quote ui/src

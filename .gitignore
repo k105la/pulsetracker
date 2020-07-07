@@ -3,3 +3,10 @@
 .*.swp
 */*.egg-info/
 __pycache__/
+
+# Dependency directories
+node_modules/
+
+# logs
+yarn-debug.log*
+yarn-error.log*

@@ -1,0 +1,67 @@
+.upload-input {
+  display: none;
+}
+.top-text {
+  font-weight: bold;
+}
+.pulse-data-spinner {
+  margin: 2.5em auto 2.5em auto;
+}
+
+.pulse-data {
+  color: dodgerblue;
+  font-size: 5em;
+  margin: 0.1em auto;
+}
+.pulse-view {
+  border-color: dodgerblue;
+  border-style: solid;
+  max-width: 250px;
+  margin: 0 auto;
+  border-width: 0.5em;
+  box-shadow: 0 8px 6px -6px black;
+}
+.pulse {
+  width: 100%;
+  margin: 1em auto;
+}
+.progress-circle {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.camara-button {
+  margin: 2em auto 1em auto;
+}
+
+.uid {
+  margin: 1em auto 1em auto;
+}
+.stick-to-bottom {
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+#user-uid {
+  font-size: 12px;
+  font-weight: bold;
+  margin-left: 0.5em;
+}
+
+.welcome-text {
+  font-weight: bold;
+}
+
+@media screen and (min-width: 768px) {
+  .pulse {
+    width: 45% !important;
+    margin: 1.5em auto 1em auto;
+  }
+  .camara-button {
+    margin: 2em auto 2em auto;
+  }
+}
