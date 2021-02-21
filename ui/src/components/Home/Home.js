@@ -32,7 +32,7 @@ class Home extends Component {
       user: {},
       hr: 0,
       prog: 0,
-      count: 0
+      count: 0,
     };
     this.retrievePulse = this.retrievePulse.bind(this);
     this.uploadVideoToFirebase = this.uploadVideoToFirebase.bind(this);
@@ -79,7 +79,7 @@ class Home extends Component {
           this.setState({ prog: progress });
           if (progress === 100) {
             this.setState({ prog: 0 });
-	  }
+          }
         });
       }
     });
@@ -92,17 +92,16 @@ class Home extends Component {
           fetch(`https://pulsetracker-api.herokuapp.com/${user.uid}`)
             .then((res) => res.json())
             .then((result) => {
-              
-	      const heartrate = result.pulse;
+              const heartrate = result.pulse;
               this.setState({ hr: heartrate });
               this.setState({ loading: false });
-	      hr_arr.push(this.state.hr);
-	      console.log(hr_arr);
-               
-	      this.setState({ count: this.state.count + 1})
-	      count_arr.push(this.state.count);
-	      console.log(count_arr);
-	    });
+              hr_arr.push(this.state.hr);
+              console.log(hr_arr);
+
+              this.setState({ count: this.state.count + 1 });
+              count_arr.push(this.state.count);
+              console.log(count_arr);
+            });
         } else {
           this.setState({ hr: 0 });
         }
@@ -150,51 +149,50 @@ class Home extends Component {
               <span id="user-uid"></span>
             </div>
 
-            <AlertButton/>
+            <AlertButton />
             <div className="pulse-view">
               {loading ? (
                 <div className="pulse-data-spinner">
                   <CircularProgress />{' '}
                 </div>
               ) : (
-	<Plot data={[
-              {
-                x: count_arr,
-                y: hr_arr,
-                type: 'scatter',
-                mode: 'lines+markers',
-                marker: { color: 'blue' },
-              },
-            ]}
-            layout={{
-              width: 400,
-              height: 280,
-              title: '',
-              yaxis: {
-                title: {
-                  text: 'heartrate(bpm)',
-                  font: {
-                    family: 'Courier New, monospace',
-                    size: 18,
-                    color: '#7f7f7f',
-                  },
-                },
-              },
-              xaxis: {
-                title: {
-                  text: 'timestep',
-                  font: {
-                    family: 'Courier New, monospace',
-                    size: 18,
-                    color: '#7f7f7f',
-                  },
-                },
-              },
-            }}
-          />
-              
-	      )}
-       
+                <Plot
+                  data={[
+                    {
+                      x: count_arr,
+                      y: hr_arr,
+                      type: 'scatter',
+                      mode: 'lines+markers',
+                      marker: { color: 'blue' },
+                    },
+                  ]}
+                  layout={{
+                    width: 400,
+                    height: 280,
+                    title: '',
+                    yaxis: {
+                      title: {
+                        text: 'heartrate(bpm)',
+                        font: {
+                          family: 'Courier New, monospace',
+                          size: 18,
+                          color: '#7f7f7f',
+                        },
+                      },
+                    },
+                    xaxis: {
+                      title: {
+                        text: 'timestep',
+                        font: {
+                          family: 'Courier New, monospace',
+                          size: 18,
+                          color: '#7f7f7f',
+                        },
+                      },
+                    },
+                  }}
+                />
+              )}
             </div>
             <input
               accept="video/*"

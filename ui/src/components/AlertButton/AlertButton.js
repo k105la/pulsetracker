@@ -28,11 +28,13 @@ export default function AlertButton() {
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
-        <DialogTitle id="alert-dialog-title">{"How to check your pulse?"}</DialogTitle>
+        <DialogTitle id="alert-dialog-title">
+          {'How to check your pulse?'}
+        </DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
-        Place your finger over your camera <br /> for 15-30 seconds.  
-        Then upload your video and wait for results.
+            Place your finger over your camera <br /> for 15-30 seconds. Then
+            upload your video and wait for results.
           </DialogContentText>
         </DialogContent>
         <DialogActions>
@@ -44,5 +46,3 @@ export default function AlertButton() {
     </div>
   );
 }
-
-
