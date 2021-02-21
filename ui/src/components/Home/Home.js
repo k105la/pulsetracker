@@ -9,8 +9,14 @@ import FileCopyIcon from '@material-ui/icons/FileCopy';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import BottomNavigation from '@material-ui/core/BottomNavigation';
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
+// Addded chart for displaying data
+import Plot from 'react-plotly.js';
 import { Logo } from '../../utils/imgUrl';
+import AlertButton from '../AlertButton/AlertButton.js';
 import './Home.css';
+
+let hr_arr = [];
+let count_arr = [];
 
 const styles = {
   largeIcon: {
@@ -26,6 +32,7 @@ class Home extends Component {
       user: {},
       hr: 0,
       prog: 0,
+      count: 0
     };
     this.retrievePulse = this.retrievePulse.bind(this);
     this.uploadVideoToFirebase = this.uploadVideoToFirebase.bind(this);
@@ -72,7 +79,7 @@ class Home extends Component {
           this.setState({ prog: progress });
           if (progress === 100) {
             this.setState({ prog: 0 });
-          }
+	  }
         });
       }
     });
@@ -85,11 +92,17 @@ class Home extends Component {
           fetch(`https://pulsetracker-api.herokuapp.com/${user.uid}`)
             .then((res) => res.json())
             .then((result) => {
-              const heartrate = result.pulse;
+              
+	      const heartrate = result.pulse;
               this.setState({ hr: heartrate });
               this.setState({ loading: false });
-              console.log(heartrate);
-            });
+	      hr_arr.push(this.state.hr);
+	      console.log(hr_arr);
+               
+	      this.setState({ count: this.state.count + 1})
+	      count_arr.push(this.state.count);
+	      console.log(count_arr);
+	    });
         } else {
           this.setState({ hr: 0 });
         }
@@ -137,23 +150,51 @@ class Home extends Component {
               <span id="user-uid"></span>
             </div>
 
-            <p className="top-text">Let's check your pulse! </p>
-            <p>
-              Place your finger over your camera <br /> for 15-30 seconds
-            </p>
+            <AlertButton/>
             <div className="pulse-view">
               {loading ? (
                 <div className="pulse-data-spinner">
                   <CircularProgress />{' '}
                 </div>
               ) : (
-                <h1 className="pulse-data"> {this.state.hr}</h1>
-              )}
-              <p>
-                {' '}
-                <b> Heart Beats per Minute </b>
-                <br /> were logged by the algorithm
-              </p>
+	<Plot data={[
+              {
+                x: count_arr,
+                y: hr_arr,
+                type: 'scatter',
+                mode: 'lines+markers',
+                marker: { color: 'blue' },
+              },
+            ]}
+            layout={{
+              width: 400,
+              height: 280,
+              title: '',
+              yaxis: {
+                title: {
+                  text: 'heartrate(bpm)',
+                  font: {
+                    family: 'Courier New, monospace',
+                    size: 18,
+                    color: '#7f7f7f',
+                  },
+                },
+              },
+              xaxis: {
+                title: {
+                  text: 'timestep',
+                  font: {
+                    family: 'Courier New, monospace',
+                    size: 18,
+                    color: '#7f7f7f',
+                  },
+                },
+              },
+            }}
+          />
+              
+	      )}
+       
             </div>
             <input
               accept="video/*"

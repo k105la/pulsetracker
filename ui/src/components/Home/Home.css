@@ -8,19 +8,6 @@
   margin: 2.5em auto 2.5em auto;
 }
 
-.pulse-data {
-  color: dodgerblue;
-  font-size: 5em;
-  margin: 0.1em auto;
-}
-.pulse-view {
-  border-color: dodgerblue;
-  border-style: solid;
-  max-width: 250px;
-  margin: 0 auto;
-  border-width: 0.5em;
-  box-shadow: 0 8px 6px -6px black;
-}
 .pulse {
   width: 100%;
   margin: 1em auto;
