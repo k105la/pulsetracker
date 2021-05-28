@@ -4,11 +4,25 @@
 ![PulseTracker Docs](https://img.shields.io/readthedocs/pulsetracker)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 
-
 ## 💭 Background
 An open source tool built for monitoring heart rate. The goal here is to have a low cost and widely accessible way to measure someones heart rate. It uses a touch-based system for generating heart rate values. In contrast to it's counterpart(touchless-based systems) it is a far more accurate and less sensitive to enviornmental conditions.  
 
-## Usage
+
+Directory Structure
+------
+    .
+    ├── docs                # Sphinx documentation folder
+    ├── examples            # The example code 
+    ├── src                 # The source code for the library
+    ├── tests               # Unit tests and system tests
+    └── ui                  # The UI
+
+## Branches
+* devel -> PR this branch for everything 
+* master -> DO NOT TOUCH, this is what's running in production
+
+
+## How to run locally
 After cloning this repository and changing directories to it.
 
 #### 1. Install the dependencies
@@ -47,15 +61,6 @@ Now to view built documentation run `open _build/html/index.html`.
 ## Contributing 
 
 Contributions are welcome! Please read our [Code of Conduct](CODE_OF_CONDUCT.md) and [how to contribute](CONTRIBUTING.md) before contributing to help this project stay welcoming.
-
-Directory Structure
-------
-    .
-    ├── docs                # Sphinx documentation folder
-    ├── examples            # The example code 
-    ├── src                 # The source code for the library
-    ├── tests               # Unit tests and system tests
-    └── ui                  # The UI
 
 To understand how the library works see [`pulse.py`](src/pulse.py)
 
