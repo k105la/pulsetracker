@@ -17,7 +17,7 @@ jobs:
        steps:
        - uses: actions/checkout@v2
        - name: Run Unit Test
-         run: sh run_docker_test.sh
+         run: make && make test
 
    
    api-test:
