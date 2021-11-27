@@ -39,5 +39,6 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "https://pulsetracker-api.herokuapp.com/"
+    "proxy": "https://pulsetracker-api-v2.herokuapp.com/"
+
 }

@@ -4,4 +4,5 @@ scipy
 pyrebase
 matplotlib
 Flask
+urllib3
 sphinx_rtd_theme

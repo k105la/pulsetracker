@@ -1,4 +1,4 @@
-FROM python:3
+FROM python:3.8
 COPY . ./pulsetracker
 WORKDIR /pulsetracker
 ENV PYTHONPATH /pulse/src
