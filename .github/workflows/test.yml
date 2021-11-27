@@ -26,7 +26,7 @@ jobs:
        env: 
            TEST_UID: 1kzd0DmeunLGEeB0nWLFFaIfuFZn  
        steps:
-         - run: curl https://pulsetracker-api.herokuapp.com/${{env.TEST_UID}}
+         - run: curl https://pulsetracker-api-v2.herokuapp.com/${{env.TEST_UID}}
 
     
    prettier:
